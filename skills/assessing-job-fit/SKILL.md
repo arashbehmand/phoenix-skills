@@ -56,9 +56,10 @@ the ten minutes.
 
 ## Check the hard constraints before anything else
 
-`honest-context.md` usually contains dealbreakers — work authorisation, a salary floor,
-location, industries the candidate will not work in. Check those against the posting
-first.
+`honest-context.md` usually names some hard limits, and what they are differs completely
+per person: work authorisation, a salary floor, a commute, a sector, a shift pattern, a
+notice period. Do not go looking for a fixed set. Read what this person wrote, and check it
+against the posting first.
 
 When one is clearly violated, say so in the verdict and keep the rest of the analysis
 short. Still write the file, and still record the match percentage: a posting that is an

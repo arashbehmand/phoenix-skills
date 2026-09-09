@@ -13,8 +13,9 @@ directory the user owns — no database, no service, no lock file.
 ```
 profile/
   resume.json          JSON Resume. The single source of truth about the candidate.
-  honest-context.md    Private. Goals, constraints, visa status, salary floor, weaknesses.
-  preferences.md       Standing instructions for how output should be written.
+  honest-context.md    Who they are, what they want, what they will not accept.
+  tone.md              How anything written in their name should sound.
+  preferences.md       Everything else they want done a particular way. Optional.
 
 applications/<company>-<role>/
   job.md               The posting as captured.
@@ -54,8 +55,11 @@ it is not to hand.)
   the base; a tailored résumé goes in the application folder. Overwriting the base with a
   tailored version is unrecoverable without git and quietly poisons every later
   application.
-- **`honest-context.md` never leaves the workspace.** It informs what you write; it is
-  never quoted to an employer, pasted into a form, or included in a draft message.
+- **`honest-context.md` is background, not source material.** Read it, understand who you
+  are writing for, then write. It shapes what you say and rarely appears in what you say.
+  Anything the user clearly holds privately works like something a colleague told you in
+  confidence: it informs your judgement and does not get repeated, including in a note
+  explaining that you did not repeat it.
 
 ## Starting a workspace
 
@@ -64,15 +68,25 @@ mkdir -p profile applications research
 git init      # optional, and the whole versioning story if used
 ```
 
-Then `profile/`, in this order:
+### `profile/` holds the defaults
+
+Three files carry across every application and every skill, so they get written once and
+are not re-asked:
 
 1. `resume.json` — see `references/importing-documents.md` if it starts as a PDF or DOCX.
    Validate it before relying on it (below).
 2. `honest-context.md` — the one that changes output quality most. Ask for it in the
-   user's own words: what they want next, what they will not accept, salary floor, visa
-   or work-authorisation situation, and what they are genuinely weak at. Prose, not a
-   form. A short honest one beats a long tidy one.
-3. `preferences.md` — how they want things written. Optional.
+   user's own words: what they want next, what they will not accept, what their situation
+   actually is, and what they are genuinely weak at. Prose, not a form. A short honest one
+   beats a long tidy one. There is no schema and there should not be one; the parts that
+   matter differ per person.
+3. `tone.md` — how anything written in their name should sound. See `references/tone.md`
+   for the template, and for why voice is a file the user owns rather than something the
+   skills assume.
+
+`preferences.md` is optional: résumé length, sections to lead with, how salary questions
+get handled. A per-application override beats any default — record it in that
+application's `notes.md` rather than editing `profile/tone.md` for one job.
 
 If `honest-context.md` is missing, say so before producing anything that depends on it,
 and offer to write it from a few questions. Do not silently proceed with a generic
@@ -101,6 +115,10 @@ This is the part that goes wrong quietly, so it has a hard rule.
 
 Then apply the new instruction on top of every earlier one, and append a line to the log
 recording what was asked, in the user's own words.
+
+Log what was asked and what changed. Do not log what you deliberately left out, and never
+by naming it: a line listing the private topics you avoided has just filed them somewhere
+new.
 
 Without this, revision 4 undoes the fix from revision 2. The realistic case: the user says
 "put the skills gap in explicitly, I'd rather lose the interview now than in round two,"

@@ -40,11 +40,12 @@ is in French and the draft is in English, ask which they want.
 | File | Required | If missing |
 |---|---|---|
 | The message being replied to | yes | Ask for it, pasted. |
-| `profile/honest-context.md` | yes | Say so. It carries the constraints the reply may need to state — sponsorship, salary floor, notice period. |
+| `profile/honest-context.md` | yes | Say so. It is how the reply comes out as theirs, and it holds whatever constraint this particular reply has to state. |
 | `applications/<slug>/contacts.md` | no | **Read the whole thread**, not just the last message. |
 | `applications/<slug>/job.md` | no | Read it if the conversation is about a specific role. |
 | `applications/<slug>/fit.md` | no | Read it — it says which strength to lead with and whether this is worth pursuing. |
-| `profile/preferences.md` | no | Read it. Tone in messages to recruiters usually lives here. |
+| `profile/tone.md` | yes | **Read before drafting.** It decides the voice. Absent, default to plain and short, and say so. |
+| `profile/preferences.md` | no | Read it if present. |
 | `research/<company>.md` | no | Read it if present. |
 
 ### Resolving which job this is
@@ -90,8 +91,15 @@ needed when the profile is attached.
 
 ## Writing
 
-- **Simple, clear language.** The candidate may be a non-native speaker, and the message
-  must sound like the person who then joins the call. Short sentences, ordinary words.
+- **Voice comes from `profile/tone.md`.** Read it first. It is the user's file and it
+  decides register, formality and vocabulary; nothing here overrides it. Without one,
+  default to short sentences and ordinary words, and say in one line that you did.
+- **Do not let it read as generated.** This matters more here than anywhere else in the
+  toolkit. A recruiter who thinks a reply was machine-written reads the candidate as low
+  effort, and that judgement attaches to the application, not just the message. The tells
+  are in **job-search-workspace**, `references/tone.md`. The em-dash is the most common,
+  "I hope this email finds you well" the most obvious, and a closing paragraph that
+  restates the message the most avoidable.
 - **Answer what was asked**, first, before anything else.
 - **Be brief.** Recruiters read on a phone between meetings.
 - **Say no clearly.** If the reply declines, decline in the first two sentences and be
@@ -101,8 +109,10 @@ needed when the profile is attached.
 - **Never invent.** Not a date the candidate has not confirmed, not a salary expectation
   they have not given, not availability. If the reply needs a fact you do not have, leave a
   clearly marked gap and ask.
-- **Do not quote `honest-context.md`.** It informs what the reply says; its wording never
-  reaches an employer.
+- **`honest-context.md` is background.** It tells you what the candidate actually wants
+  and what they will not accept, so the reply is theirs rather than generic. What they
+  hold privately stays private, and that includes not writing a note about what you left
+  out: a file recording which private topics were avoided has just recorded them.
 
 ## Before it is sent
 

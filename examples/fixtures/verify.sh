@@ -176,6 +176,30 @@ else
 fi
 
 echo
+echo "skill policy"
+if python3 "$repo/examples/fixtures/check_skills.py" "$repo" >"$tmp/pol" 2>&1; then
+    sed 's/^/  /' "$tmp/pol" | sed 's/^  *ok/  ok/'; pass=$((pass + 1))
+else
+    sed 's/^/  /' "$tmp/pol"; fail=$((fail + 1))
+fi
+# It must fail when an assumption about the user is reintroduced.
+rm -rf "$tmp/reg"; mkdir -p "$tmp/reg"; cp -R "$repo/skills" "$repo/examples" "$tmp/reg/"
+python3 - "$tmp/reg" <<'INNER'
+import pathlib, sys
+p = pathlib.Path(sys.argv[1]) / "skills/drafting-outreach-replies/SKILL.md"
+p.write_text(p.read_text().replace(
+    "- **Voice comes from `profile/tone.md`.** Read it first.",
+    "- **Simple language.** The candidate may be a non-native speaker."))
+INNER
+if python3 "$repo/examples/fixtures/check_skills.py" "$tmp/reg" >/dev/null 2>&1; then
+    printf '  FAIL  a reintroduced assumption about the user was not detected\n'
+    fail=$((fail + 1))
+else
+    printf '  ok    a reintroduced assumption about the user is detected\n'
+    pass=$((pass + 1))
+fi
+
+echo
 echo "uk_visa_sponsor_lookup.py name matching (offline)"
 if python3 "$repo/skills/researching-companies/scripts/matcher_cases.py" >"$tmp/match" 2>&1; then
     n=$(tail -1 "$tmp/match")

@@ -47,8 +47,10 @@ next.
 culture signals, use them. If it does not, do not invent them — an answer praising a value
 the company has never claimed is worse than an answer that does not mention values at all.
 
-**Plain professional language**, roughly IELTS band 7, same reasoning as the cover letter:
-the answer has to sound like the person who then turns up to the interview.
+**The voice comes from `profile/tone.md`**, same as everything else written in the
+candidate's name. Absent one, default to the plainest register you use anywhere: these are
+read fastest and skimmed hardest. The answer has to sound like the person who then turns up
+to the interview.
 
 **Answer the question that was asked.** Screening questions are frequently answered
 sideways — "Describe a conflict with a colleague" gets an answer about a technical

@@ -21,6 +21,7 @@ confident" — is worse than nothing, because it uses up the time they had.
 | `applications/<slug>/resume.json` | no | Prefer it if present — it is what they actually sent. |
 | `research/<company>.md` | no | **See the anti-hallucination rule.** Offer to run **researching-companies** first. |
 | `profile/honest-context.md` | no | Read it — it carries the weaknesses worth rehearsing and the questions they dread. |
+| `profile/tone.md` | no | Read it if present. Talking points are written in the candidate's voice, so it applies to those. |
 | `applications/<slug>/fit.md` | no | Read it — sections 4 and 5 are the gap analysis, already done. |
 | `applications/<slug>/contacts.md` | no | Read it — it says which round this is, who is in it, and what has already been committed to. |
 | `applications/<slug>/cover-letter.md`, `questions.md` | no | Read them. The candidate will be asked about what they wrote. |
@@ -50,6 +51,11 @@ In practice:
 
 Better to hand back a guide with a visible hole in it than a complete-looking one with an
 invented patch.
+
+**Do not write down what you left out.** A guide saying "no private details (X, Y, Z) were
+included" has just written X, Y and Z into a third file, next to the ones that get sent.
+"Private material excluded" carries the same assurance and names nothing. Usually nobody
+asked.
 
 ## Output
 

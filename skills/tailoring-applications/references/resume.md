@@ -44,6 +44,36 @@ whatever `fit.md` identified as the strongest match.
 or two; irrelevant projects come out; the skills block loses the entries nobody is hiring
 for here.
 
+**True is necessary, not sufficient.** The integrity rule says never invent. It says
+nothing about facts that are true and unhelpful, and that gap is where real damage happens.
+
+A live run put "27 GitHub stars" on a résumé. The number was true and came from the
+candidate's own notes. But the base résumé deliberately left it out, and 27 is a small
+number: stating it invites the reader to weigh it. "Open-source, OpenAI-compatible API for
+agentic multi-model orchestration" is stronger with no count attached.
+
+So, before adding a fact that is not in the base résumé, ask whether it helps. Specifically:
+
+- **A small number is usually worse than no number.** Stars, downloads, team size, users.
+  Include a figure when it is impressive on its own, or when the posting asks for scale.
+- **If the base résumé omits something the candidate clearly knows**, treat that as a
+  decision, not an oversight. Do not reinstate it without asking.
+- **Precision cuts both ways.** "Six months" reads shorter than "2024–2025" for the same
+  period. Neither is dishonest; pick the one that does not mislead.
+
+Adding a true fact that weakens the application is not a lie, but it is still your mistake.
+
+**Merging roles: write one title, do not concatenate.** Compressing three early jobs into
+one entry is usually right. What is not right is joining their titles with commas.
+
+A live run produced `"position": "Embedded Systems Engineer, Software Developer, Software
+Developer"`. Honest, and it looks like a software bug on the page.
+
+Write a single title that honestly covers the span: `Software & Embedded Systems Engineer`.
+Check the candidate's own files first, because someone who has merged those roles before
+has already chosen the wording, and theirs beats yours. Put the individual employers and
+dates in the entry body if they matter.
+
 ## ATS
 
 Applicant tracking systems parse before a human reads. What breaks them:

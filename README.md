@@ -146,7 +146,8 @@ mkdir ~/job-search && cd ~/job-search && git init
 mkdir -p profile applications research
 ```
 
-**2. Fill in `profile/`.** Three files, and the second one matters most.
+**2. Fill in `profile/`.** These are your defaults. Written once, used by every skill, for
+every application. The second one matters most.
 
 - `profile/resume.json` — your CV in [JSON Resume][jsonresume] format. If you have a PDF or
   a Word document, hand it to the agent and ask it to convert; `job-search-workspace`
@@ -154,8 +155,11 @@ mkdir -p profile applications research
 - `profile/honest-context.md` — the private one. Write it badly and quickly rather than not
   at all. Salary floor, visa situation, what you will not do, what you are weak at.
   [Here is a filled-in example.](examples/workspace/profile/honest-context.md)
-- `profile/preferences.md` — how you want output written. Optional, but it is where
-  "never use the word spearheaded" goes.
+- `profile/tone.md` — how anything written in your name should sound. One line is enough:
+  *brief, friendly, plain English, no em-dashes, does not scream AI.* The skills carry no
+  opinion about your voice, so this is where you set it.
+- `profile/preferences.md` — anything else standing. Optional, and it is where "never use
+  the word spearheaded" goes.
 
 **3. Save a posting** to `applications/<company>-<role>/job.md`.
 

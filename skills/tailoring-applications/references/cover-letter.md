@@ -8,17 +8,23 @@ Output: `applications/<slug>/cover-letter.md`.
 Two good paragraphs beat three padded ones. The worked example in the phoenix-skills
 repository is 360 words.
 
-**Simple language.** This is the most-ignored instruction and the one that matters most.
-Phoenix's original wording: *keep the language grammatically correct, professional and
-clean, but bear in mind the applicant is a non-native speaker, so to have a true tone keep
-the language simple and avoid complex jargon or corporate jargon.* Aim at roughly IELTS
-band 7 — fluent, correct, unshowy.
+**The voice comes from `profile/tone.md`.** Read it before writing a word, and follow it.
+It is the user's file and it outranks anything here about register, formality or vocabulary.
 
-The reason is not readability. It is that the letter has to sound like the person who then
-turns up to the call. A letter full of elegant subordinate clauses, written for a candidate
-whose spoken English is good but plain, creates a gap the interviewer notices. Short
-sentences. Ordinary words. No "leverage", "synergy", "passionate about", "thrilled to",
-"dynamic environment".
+If there is no `tone.md`, default to plain: short sentences, ordinary words, fluent and
+unshowy. Then say you did, in one line, so the user knows where to change it. Phoenix
+hardcoded this as a fact about its one user, *"bear in mind that applicant is a non-native
+speaker"*, which was right for him and wrong as a rule.
+
+Whatever the register, the letter has to sound like the person who then turns up to the
+call. A letter written in a voice the candidate does not have creates a gap the interviewer
+notices. That holds for a plain writer given elegant clauses and for an elaborate writer
+flattened into short ones.
+
+**Do not make it read as generated.** In hiring that gets discounted, and the discount
+lands on the facts too. The tells are listed in **job-search-workspace**,
+`references/tone.md`; the em-dash is the most common one and "I am writing to express my
+interest" is the most fatal. Read the letter aloud before sending it.
 
 **The goal is an interview, not the job.** Phoenix's line: *the goal is to maximise chances
 of getting an interview, not to get the offer without interview.* The letter does not have

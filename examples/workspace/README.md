@@ -17,8 +17,9 @@ Use it two ways:
 ```
 profile/
   resume.json          JSON Resume. The single source of truth about the candidate.
-  honest-context.md    Private. Goals, constraints, visa status, salary floor, weaknesses.
-  preferences.md       Standing instructions for how output should be produced.
+  honest-context.md    Who she is, what she wants, what she will not accept.
+  tone.md              How anything written in her name should sound.
+  preferences.md       Everything else she wants done a particular way.
 
 applications/<company>-<role>/
   job.md               The posting as captured.
@@ -37,6 +38,12 @@ applications.md        The index. Lookup, not pipeline.
 ```
 
 ## What each example is here to demonstrate
+
+**`profile/tone.md`** decides the voice of every letter, answer and recruiter reply. It is
+a file rather than a setting inside the skills because Phoenix hardcoded *"the applicant is
+a non-native speaker"* as a fact about its one user. That was right for him and wrong for
+everyone else. Whatever is written here wins, including "write like a barrister" if that is
+the truth.
 
 **`profile/honest-context.md`** is the piece with no off-the-shelf equivalent, and the
 reason output does not read like generic AI filler. Note that it is prose, not a form —

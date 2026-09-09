@@ -58,6 +58,7 @@ That is a `fit.md` finding, and it may mean the application is not worth making.
 | `applications/<slug>/job.md` | yes | Ask for the posting. |
 | `profile/resume.json` | yes | See **job-search-workspace**. |
 | `profile/honest-context.md` | yes | Say so; offer to write one. |
+| `profile/tone.md` | yes, if writing prose | **Read before writing.** It decides the voice. Absent, default to plain and say so. |
 | `profile/preferences.md` | no | Read it if present — it is where standing instructions live. |
 | `research/<company>.md` | no | Read it if present. |
 | `applications/<slug>/contacts.md` | no | Read it if present; a prior exchange changes the tone and may already have committed to something. |

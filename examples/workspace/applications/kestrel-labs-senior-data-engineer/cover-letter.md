@@ -18,7 +18,7 @@ against local brokers. I have not owned a Flink or Spark Streaming system servin
 traffic, and my Kubernetes is reading manifests and deploying to a cluster somebody else
 operated. You asked for strong Kubernetes and production stream processing, so you should
 know that from me rather than find it in round two. What I bring instead is the migration
-itself — twelve producing teams, an audit trail that has to survive being questioned
+itself: twelve producing teams, an audit trail that has to survive being questioned
 months later, and a cutover where nobody downstream notices. That is the risky part of
 your eighteen-month plan, and it is the part I have done.
 
@@ -26,4 +26,4 @@ The work also matters to me in a way that is easy to claim and harder to prove, 
 keep it short: emissions figures that customers report to regulators have to be right, and
 I like problems where being roughly right is not good enough. I would welcome the chance
 to talk about how you are handling reproducibility of calculations across a methodology
-change — that is the design question I would want to get right first.
+change. That is the design question I would want to get right first.

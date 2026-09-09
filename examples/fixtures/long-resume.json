@@ -1,0 +1,163 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Tomás Ferreira",
+    "label": "Principal Software Engineer",
+    "email": "tomas.ferreira@example.com",
+    "phone": "+44 7700 900318",
+    "summary": "Principal engineer with twenty years across payments, logistics and public-sector systems. Specialises in taking systems that already carry production traffic and changing them without an outage.",
+    "location": {
+      "city": "Bristol",
+      "countryCode": "GB",
+      "region": "England"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "tomas-ferreira-example",
+        "url": "https://www.linkedin.com/in/tomas-ferreira-example"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Meridian Payments",
+      "position": "Principal Engineer",
+      "location": "Bristol, UK",
+      "startDate": "2022-01",
+      "summary": "Technical direction for the settlement platform processing £4bn a year across eleven acquiring banks.",
+      "highlights": [
+        "Led the migration of the settlement ledger from a single Oracle instance to a partitioned Postgres cluster with zero settlement delay across the cutover weekend.",
+        "Cut end-of-day reconciliation from 4h20m to 38 minutes by replacing nightly full recomputation with an incremental model.",
+        "Designed the idempotency and replay model now used by every service that touches money movement.",
+        "Chaired the architecture review group; introduced written design records, of which 61 have been published."
+      ]
+    },
+    {
+      "name": "Meridian Payments",
+      "position": "Staff Engineer",
+      "location": "Bristol, UK",
+      "startDate": "2019-06",
+      "endDate": "2021-12",
+      "highlights": [
+        "Rebuilt the card authorisation path to cut p99 latency from 840ms to 210ms under peak load.",
+        "Introduced contract testing between the twelve services on the authorisation path, ending a class of integration failure that had caused three incidents that year.",
+        "Ran the PCI DSS re-certification workstream for the platform, passing with no findings.",
+        "Mentored four engineers to senior level; two now lead their own teams.",
+        "Introduced load testing against a production-shaped dataset, catching a connection-pool exhaustion bug that would have failed on Black Friday."
+      ],
+      "summary": "Owned the card authorisation path and the shared platform libraries used across the payments estate."
+    },
+    {
+      "name": "Northwind Logistics",
+      "position": "Lead Engineer, Platform",
+      "location": "Bristol, UK",
+      "startDate": "2016-03",
+      "endDate": "2019-05",
+      "summary": "Owned the routing and dispatch platform behind 9,000 daily deliveries.",
+      "highlights": [
+        "Replaced a monolithic dispatch scheduler with an event-driven service, cutting average route computation from 90 seconds to under 4.",
+        "Built the driver telematics ingestion pipeline handling 40M events a day.",
+        "Reduced infrastructure spend by 27% by right-sizing a fleet that had been provisioned for a peak that no longer existed.",
+        "Introduced on-call for the platform team and wrote the runbooks, taking mean time to recovery from 71 minutes to 18.",
+        "Negotiated and delivered the carrier API integration with three national couriers."
+      ]
+    },
+    {
+      "name": "Civic Digital Service",
+      "position": "Senior Developer",
+      "location": "London, UK",
+      "startDate": "2013-09",
+      "endDate": "2016-02",
+      "highlights": [
+        "Delivered two citizen-facing services to the public beta standard, both meeting the accessibility bar at first assessment.",
+        "Migrated a 1.4M-record legacy case management system with no data loss and a two-hour downtime window.",
+        "Wrote and taught the department's first automated testing guidance, adopted by four other delivery teams."
+      ],
+      "summary": "Delivered digital services to the Government Service Standard within a multidisciplinary team."
+    },
+    {
+      "name": "Halberd Systems",
+      "position": "Developer",
+      "location": "Lisbon, Portugal",
+      "startDate": "2010-04",
+      "endDate": "2013-08",
+      "highlights": [
+        "Built integration adapters between client ERP systems and the company's warehouse product.",
+        "Took the release process from a manual four-hour checklist to a 20-minute automated pipeline."
+      ]
+    },
+    {
+      "name": "Halberd Systems",
+      "position": "Junior Developer",
+      "location": "Lisbon, Portugal",
+      "startDate": "2008-07",
+      "endDate": "2010-03",
+      "highlights": [
+        "Maintained reporting features across three client deployments.",
+        "Rewrote the nightly export job that had failed most weeks, after which it failed twice in eighteen months."
+      ]
+    },
+    {
+      "name": "Universidade de Lisboa",
+      "position": "Research Assistant",
+      "location": "Lisbon, Portugal",
+      "startDate": "2006-10",
+      "endDate": "2008-06",
+      "highlights": [
+        "Built simulation tooling for a distributed-systems research group.",
+        "Co-authored two workshop papers on consensus under partial synchrony."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Universidade de Lisboa",
+      "area": "Computer Science",
+      "studyType": "MSc",
+      "startDate": "2004-09",
+      "endDate": "2006-07"
+    },
+    {
+      "institution": "Universidade de Lisboa",
+      "area": "Computer Science",
+      "studyType": "BSc",
+      "startDate": "2001-09",
+      "endDate": "2004-07"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Languages",
+      "keywords": [
+        "Java",
+        "Go",
+        "Python",
+        "SQL"
+      ]
+    },
+    {
+      "name": "Platform",
+      "keywords": [
+        "Kubernetes",
+        "Kafka",
+        "Postgres",
+        "Terraform"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Portuguese",
+      "fluency": "Native speaker"
+    },
+    {
+      "language": "English",
+      "fluency": "Full professional proficiency"
+    },
+    {
+      "language": "Spanish",
+      "fluency": "Professional working proficiency"
+    }
+  ]
+}

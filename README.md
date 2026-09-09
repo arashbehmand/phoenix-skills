@@ -46,7 +46,7 @@ Each lands at `skills/<name>/`. See [Status](#status) for what has shipped so fa
 
 | Skill | Use it when |
 |---|---|
-| `job-search-workspace` | Setting up the folder, importing a CV or a posting, exporting a résumé to PDF |
+| [`job-search-workspace`](skills/job-search-workspace/) | Setting up the folder, importing a CV or a posting, exporting a résumé to PDF |
 | `assessing-job-fit` | You have a posting and want an honest go/no-go before spending an evening on it |
 | `tailoring-applications` | You have decided to apply: résumé, cover letter, screening answers |
 | `researching-companies` | Due diligence before applying, before an interview, or before accepting |
@@ -130,6 +130,13 @@ tell it to read `SKILL.md` when relevant. There is nothing runtime-specific insi
 
 To update later, `git pull` and copy again.
 
+`examples/` stays in the cloned repository — it is reference material and fixtures, not
+part of a skill. To check that the scripts work in your environment:
+
+```bash
+./examples/fixtures/verify.sh
+```
+
 ## Quickstart
 
 **1. Make a workspace.** Anywhere you like; your own git repository is a good place.
@@ -195,7 +202,7 @@ this installed.
 Under construction, one skill at a time.
 
 - [x] Repo scaffold, example workspace
-- [ ] `job-search-workspace`
+- [x] `job-search-workspace`
 - [ ] `assessing-job-fit`
 - [ ] `tailoring-applications`
 - [ ] `researching-companies`

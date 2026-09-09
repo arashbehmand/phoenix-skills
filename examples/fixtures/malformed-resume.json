@@ -1,0 +1,93 @@
+{
+  "name": "Mirela Ionescu",
+  "title": "Senior Data Engineer",
+  "contact_info": {
+    "email": "mirela.ionescu@example.com",
+    "phone": "+44 7700 900142",
+    "location": "Manchester, England",
+    "linkedin": "mirela-ionescu-example",
+    "github": "mirela-example"
+  },
+  "summary": "Data engineer with nine years building production data platforms.",
+  "experience": [
+    {
+      "company": "Halcyon Retail Group",
+      "role": "Senior Data Engineer",
+      "location": "Manchester, UK",
+      "description": [
+        "Rebuilt the nightly sales and stock pipeline on Spark and Airflow, cutting critical-path runtime from 6h10m to 1h50m.",
+        "Reduced AWS spend on the data platform by £14k per month (31%).",
+        "Introduced dbt with contract tests and CI on 240 models."
+      ],
+      "dates": "Apr 2023 - Present"
+    },
+    {
+      "company": "Halcyon Retail Group",
+      "role": "Data Engineer",
+      "location": "Manchester, UK",
+      "description": [
+        "Migrated 60 legacy SQL Server stored procedures to a Redshift and dbt stack.",
+        "Wrote the ingestion framework still used for all 27 third-party supplier feeds."
+      ],
+      "dates": "Nov 2021 - Mar 2023"
+    },
+    {
+      "company": "Vantiq Software",
+      "role": "Data Engineer",
+      "location": "Cluj-Napoca, Romania",
+      "description": [
+        "Built a Python and Airflow ingestion service processing 4M insurance claim records a day.",
+        "Cut a client's month-end close reporting run from 9 hours to 40 minutes."
+      ],
+      "dates": "Sep 2018 - Aug 2020"
+    }
+  ],
+  "education": [
+    {
+      "school": "University of Manchester",
+      "degree": "MSc",
+      "major": "Data Science",
+      "gpa": "Distinction",
+      "dates": "Sep 2020 - Sep 2021"
+    },
+    {
+      "school": "Technical University of Cluj-Napoca",
+      "degree": "BSc",
+      "major": "Computer Science",
+      "dates": "2012 - 2016"
+    }
+  ],
+  "skills": [
+    "Python",
+    "SQL",
+    "Apache Spark",
+    "Apache Airflow",
+    "dbt",
+    "Kafka",
+    "AWS",
+    "Terraform"
+  ],
+  "projects": [
+    {
+      "title": "stockstream",
+      "description": [
+        "Replays 2M recorded events at configurable rates against a local broker.",
+        "Around 300 GitHub stars and used by two teams outside the original employer."
+      ],
+      "link": "https://github.com/mirela-example/stockstream",
+      "tech": ["Python", "Kafka", "Docker"]
+    }
+  ],
+  "certificates": [
+    {
+      "title": "AWS Certified Data Engineer - Associate",
+      "authority": "Amazon Web Services",
+      "date": "June 2024",
+      "url": null
+    }
+  ],
+  "languages": [
+    { "name": "Romanian", "level": "Native speaker" },
+    { "name": "English", "level": "Full professional proficiency" }
+  ]
+}

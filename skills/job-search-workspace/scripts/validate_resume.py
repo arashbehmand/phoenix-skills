@@ -112,6 +112,42 @@ MONTHS = {m: i for i, m in enumerate(
      "jul", "aug", "sep", "oct", "nov", "dec"], start=1)}
 
 
+CODE_FENCE = re.compile(r"^```[a-zA-Z0-9_+-]*\n(.+?)\n?```$", re.DOTALL)
+
+
+def strip_code_fences(text: str) -> str:
+    """Unwrap ```json ... ``` around a whole document.
+
+    Inlined from Phoenix's phoenix_lib.utils.text rather than depended on. A model
+    asked for JSON returns it fenced often enough that failing with "not valid JSON"
+    on an otherwise perfect resume is a bad first experience — and the user cannot
+    tell from that message that the fix is deleting three backticks.
+
+    Only strips when the entire content is wrapped; a fence in the middle of a file
+    is left alone.
+    """
+    if not text or not isinstance(text, str):
+        return text
+    stripped = text.strip()
+    if not stripped.startswith("```"):
+        return text
+    match = CODE_FENCE.match(stripped)
+    return match.group(1).strip() if match else text
+
+
+def load_resume(path: str) -> Any:
+    """Read a JSON Resume file, tolerating code fences around it."""
+    with open(path, encoding="utf-8") as fh:
+        raw = fh.read()
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError:
+        unfenced = strip_code_fences(raw)
+        if unfenced is raw or unfenced == raw:
+            raise
+        return json.loads(unfenced)
+
+
 class Finding:
     __slots__ = ("level", "path", "message", "fixed")
 
@@ -563,8 +599,7 @@ def main(argv: List[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     try:
-        with open(args.path, encoding="utf-8") as fh:
-            data = json.load(fh)
+        data = load_resume(args.path)
     except FileNotFoundError:
         print(f"{args.path}: no such file", file=sys.stderr)
         return 2

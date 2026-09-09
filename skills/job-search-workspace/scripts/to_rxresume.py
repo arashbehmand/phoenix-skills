@@ -46,7 +46,7 @@ from math import ceil
 from typing import Any, Dict, List, Tuple
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from validate_resume import validate  # noqa: E402
+from validate_resume import load_resume, validate  # noqa: E402
 
 _rng = random.Random()
 
@@ -732,8 +732,7 @@ def main(argv: List[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     try:
-        with open(args.path, encoding="utf-8") as fh:
-            raw = json.load(fh)
+        raw = load_resume(args.path)
     except FileNotFoundError:
         print(f"{args.path}: no such file", file=sys.stderr)
         return 2

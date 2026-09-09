@@ -58,6 +58,19 @@ assert "repair maps list description -> highlights" "len(d['work'][0]['highlight
 assert "repair splits 'Apr 2023 - Present'" \
     "d['work'][0]['startDate'] == '2023-04' and 'endDate' not in d['work'][0]" "$tmp/fixed.json"
 
+printf '```json\n{"basics":{"name":"T"},"work":[{"company":"Acme","role":"Eng"}]}\n```\n' > "$tmp/fenced.json"
+check "a fenced JSON résumé is read, not rejected" 1 \
+    python3 "$scripts/validate_resume.py" "$tmp/fenced.json" -q
+check "and repairs" 0 \
+    python3 "$scripts/validate_resume.py" "$tmp/fenced.json" --fix -o "$tmp/unfenced.json" -q
+assert "the unfenced result is real JSON Resume" \
+    "d['work'][0]['name'] == 'Acme' and d['work'][0]['position'] == 'Eng'" "$tmp/unfenced.json"
+check "to_rxresume also accepts a fenced file" 0 \
+    python3 "$scripts/to_rxresume.py" "$tmp/fenced.json" --seed 1 -o "$tmp/fenced.v5.json"
+printf '{ not json at all' > "$tmp/broken.json"
+check "a genuinely broken file still fails" 2 \
+    python3 "$scripts/validate_resume.py" "$tmp/broken.json" -q
+
 check "ISO-formatted date ranges repair" 0 \
     python3 "$scripts/validate_resume.py" "$here/iso-dates-resume.json" --fix -o "$tmp/iso.json" -q
 assert "an ISO range keeps its end date" \

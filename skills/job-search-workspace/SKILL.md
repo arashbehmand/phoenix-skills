@@ -43,6 +43,11 @@ it is not to hand.)
   non-alphanumerics collapsed to single hyphens, no trailing hyphen. It is how an inbound
   message naming only a company gets resolved to a job description and a prior thread.
   Once created, do not rename it.
+
+  **Fold accents to ASCII first**: `Nestlé` → `nestle`, `Ørsted` → `orsted`,
+  `Société Générale` → `societe-generale`. A slug carrying a `é` still works on disk but
+  stops matching when someone later types the plain-ASCII name, which is the one thing the
+  slug exists to do. The same applies to `research/<company>.md`.
 - **One research file per company**, at `research/<company>.md`, because one company can
   produce several applications.
 - **Never write to `profile/` while working on an application.** `profile/resume.json` is

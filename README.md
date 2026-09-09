@@ -197,6 +197,19 @@ the work. The table is how you find it.
 Markdown because you can edit it by hand, diff it, and read it on GitHub without any of
 this installed.
 
+## Getting recruiter threads in
+
+Paste them. Select the conversation in LinkedIn or Gmail, copy, paste into the agent —
+nothing to install, and you can redact before pasting. This is the assumed path and
+nothing here depends on anything else.
+
+If you want a button instead, [Phoenix Pilot](https://github.com/arashbehmand/phoenix-pilot)
+is a separate MIT-licensed Chrome extension that captures a thread in the format
+`contacts.md` expects. It currently requires a backend that is being retired;
+[`docs/chrome-extension.md`](docs/chrome-extension.md) is the proposal for cutting that out
+and turning it into a zero-backend clipboard bridge. A LinkedIn MCP server or browser
+automation cover the same ground if you already run one.
+
 ## Status
 
 Under construction, one skill at a time.
@@ -208,7 +221,7 @@ Under construction, one skill at a time.
 - [x] `researching-companies`
 - [x] `preparing-for-interviews`
 - [x] `drafting-outreach-replies`
-- [ ] `docs/chrome-extension.md`, `docs/design-notes.md`
+- [x] [`docs/chrome-extension.md`](docs/chrome-extension.md), [`docs/design-notes.md`](docs/design-notes.md)
 
 ## Where this came from
 
@@ -225,7 +238,8 @@ strength of an incorrect code comment, the section-overflow split that works aro
 résumé builder refusing to break a block across pages, and the revision discipline that
 stops edit number four from undoing the fix from edit number two.
 
-`docs/design-notes.md` will record what was dropped and why, so it does not get added back.
+[`docs/design-notes.md`](docs/design-notes.md) records what was dropped and why, so it does
+not get added back.
 
 ## Licence
 

@@ -165,6 +165,11 @@ Q12-Q15 | Company/Role Fit: 3 — Q16-Q18 | Career Vision: 2 — Q19-Q20)*
 
 ## 4. Crafting Your Narrative: Key Talking Points
 
+⚠️ These map to job requirements only. Each one should also connect to a stated company
+value, and none does, because Kestrel publishes no values statement that the research
+turned up — see section 1. Do not substitute a value inferred from their marketing copy;
+if you find a real one before Friday, add it here.
+
 *   **Talking Point 1 — Changing the engine without stopping the car**
     *   **Theme:** Live migration with verified correctness.
     *   **Connects to:** JD requirement ("A track record of migrating a live system without

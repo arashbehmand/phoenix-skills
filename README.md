@@ -49,9 +49,9 @@ Each lands at `skills/<name>/`. See [Status](#status) for what has shipped so fa
 | [`job-search-workspace`](skills/job-search-workspace/) | Setting up the folder, importing a CV or a posting, exporting a résumé to PDF |
 | [`assessing-job-fit`](skills/assessing-job-fit/) | You have a posting and want an honest go/no-go before spending an evening on it |
 | [`tailoring-applications`](skills/tailoring-applications/) | You have decided to apply: résumé, cover letter, screening answers |
-| `researching-companies` | Due diligence before applying, before an interview, or before accepting |
-| `preparing-for-interviews` | An interview is booked |
-| `drafting-outreach-replies` | A recruiter emailed or messaged you on LinkedIn |
+| [`researching-companies`](skills/researching-companies/) | Due diligence before applying, before an interview, or before accepting |
+| [`preparing-for-interviews`](skills/preparing-for-interviews/) | An interview is booked |
+| [`drafting-outreach-replies`](skills/drafting-outreach-replies/) | A recruiter emailed or messaged you on LinkedIn |
 
 ### How they fit together
 
@@ -205,9 +205,9 @@ Under construction, one skill at a time.
 - [x] `job-search-workspace`
 - [x] `assessing-job-fit`
 - [x] `tailoring-applications`
-- [ ] `researching-companies`
-- [ ] `preparing-for-interviews`
-- [ ] `drafting-outreach-replies`
+- [x] `researching-companies`
+- [x] `preparing-for-interviews`
+- [x] `drafting-outreach-replies`
 - [ ] `docs/chrome-extension.md`, `docs/design-notes.md`
 
 ## Where this came from

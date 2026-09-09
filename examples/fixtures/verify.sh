@@ -118,5 +118,15 @@ cmp -s "$tmp/s7a.json" "$tmp/s7b.json" && { echo "  ok    --seed makes output re
                                        || { echo "  FAIL  --seed did not make output reproducible"; fail=$((fail + 1)); }
 
 echo
+echo "uk_visa_sponsor_lookup.py name matching (offline)"
+if python3 "$repo/skills/researching-companies/scripts/matcher_cases.py" >"$tmp/match" 2>&1; then
+    n=$(tail -1 "$tmp/match")
+    printf '  ok    %s\n' "$n"; pass=$((pass + 1))
+else
+    printf '  FAIL  name matching regressed\n'; sed 's/^/          /' "$tmp/match"
+    fail=$((fail + 1))
+fi
+
+echo
 printf '%d passed, %d failed\n' "$pass" "$fail"
 [ "$fail" -eq 0 ]

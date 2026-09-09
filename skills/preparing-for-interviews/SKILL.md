@@ -163,6 +163,20 @@ themselves, specific to this role, this company and this résumé.
 
 Assume they are in a hurry and reading this the night before.
 
+## If the environment has more tools
+
+Nothing here requires any of them, and the anti-hallucination rule above outranks all of
+them — a tool that returns nothing means the data is missing, not that you should guess.
+
+- **Web search or fetch** — the honest way to fill the company section when
+  `research/<company>.md` does not exist. Prefer running **researching-companies** properly
+  and writing the file, so the next skill benefits too.
+- **A LinkedIn MCP server**, if the user already runs one — an interviewer's public role
+  and background is the single input that moves the confidence score most. Read only what
+  the person has published, do not infer from activity, and say where it came from. The
+  simpler route is usually asking the recruiter for names and focus areas.
+- **Calendar access** — only to confirm the time and format you were told about.
+
 ## After writing
 
 Add a line to `notes.md` with the interview date and what was generated. If anything was

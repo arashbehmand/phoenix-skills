@@ -117,6 +117,21 @@ Append the sent message to `contacts.md` in that contact's block — see
 `applications.md` if this moved things along, and add a line to `notes.md` for anything
 committed to: a date, a number, a decision.
 
+## If the environment has more tools
+
+Nothing here requires any of them. Pasting the thread is the assumed path and works
+everywhere, and it lets the candidate redact before pasting.
+
+- **A LinkedIn MCP server**, if the user already runs one — typically `get_inbox` and
+  `get_conversation`, which captures a thread without a browser extension. Message sending
+  exists too; do not use it without an explicit, in-the-moment instruction to send.
+- **The Phoenix Pilot browser extension** — captures the open LinkedIn or Gmail thread in
+  the format `contacts.md` expects. See `docs/chrome-extension.md`.
+- **Browser automation or a Gmail connector** — reads the thread as a person would.
+
+`references/contacts-format.md` has the full ordering and the reason LinkedIn is never
+scraped directly.
+
 ## Next
 
 - An interview came out of it → **preparing-for-interviews**

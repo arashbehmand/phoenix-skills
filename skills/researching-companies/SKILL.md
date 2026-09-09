@@ -115,7 +115,17 @@ its output the way it asks to be read:
 Outside the UK there is no equivalent single register; check the employer's careers page,
 ask the recruiter directly, and treat the answer as unverified until it is in writing.
 
-## Optional: UK Companies House
+## If the environment has more tools
+
+Nothing here requires any of them. Web search is the primary instrument and is assumed.
+
+- **A Companies House key** (free) — see below. The highest signal-per-line available.
+- **A LinkedIn MCP server**, if the user already runs one — headcount trend, team size and
+  tenure. Their account and their decision, never yours; and see the scraping note under
+  **Do not**.
+- **Browser automation** — for a page behind a login, read as a person would.
+
+### Optional: UK Companies House
 
 A free API key from [developer.company-information.service.gov.uk](https://developer.company-information.service.gov.uk/)
 unlocks the highest signal-per-line in the whole exercise, and none of it is obtainable by

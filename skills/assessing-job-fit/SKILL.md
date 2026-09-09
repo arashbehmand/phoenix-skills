@@ -175,6 +175,13 @@ Concretely, that means:
 - **Do not pad.** If sections 1 and 2 are short because the posting is thin, let them be
   short and say the posting is thin.
 
+## If the environment has more tools
+
+Nothing here requires any of them. **Web search or fetch** covers a posting that is a URL
+and the sanity checks section 2 needs without a research file — it is not a substitute for
+**researching-companies**. A **LinkedIn MCP server**, if the user already runs one, answers
+team-size questions; their account, their decision.
+
 ## After writing it
 
 Update the row in `applications.md` — stage `interested`, or `closed` if the verdict is

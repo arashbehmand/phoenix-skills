@@ -97,6 +97,15 @@ something uncomfortable in, note that in the log.
 - Read the cover letter back to the candidate before it is sent anywhere. Do not send
   anything on their behalf without being asked to.
 
+## If the environment has more tools
+
+Genuinely none needed — this skill reads local files and writes local files, and the only
+executable it uses is the résumé validator, which is standard library and offline.
+
+A filesystem MCP server is fine if that is how the workspace is reached. Do not reach for
+web search to "check" a claim about the candidate: the workspace is the source of truth
+about them, and anything not in it needs to come from the candidate, not the internet.
+
 ## Next
 
 - Application submitted, interview booked → **preparing-for-interviews**

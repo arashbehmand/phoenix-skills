@@ -53,8 +53,8 @@ the candidate should apply for, carried all the way from capture to interview pr
   data contracts, schema evolution, migration without downtime — and contains the words
   "Kubernetes," "Flink" and "EKS" **nowhere**, because the candidate has not done those
   things. That is the integrity rule in practice.
-- `cover-letter.md` is three paragraphs, 360 words, plain sentences, no header, no sign-off,
-  and it discloses the gaps rather than papering over them.
+- `cover-letter.md` is three paragraphs and under 400 words, in plain sentences, with no
+  header and no sign-off, and it discloses the gaps rather than papering over them.
 - `interview-prep.md` runs the full enforced mix — 6 behavioural, 5 technical, 4
   situational, 3 fit, 2 career-vision — with a rationale per question, and marks with ⚠️
   everything built on speculative data. The interviewer-specific section is deliberately

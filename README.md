@@ -47,8 +47,8 @@ Each lands at `skills/<name>/`. See [Status](#status) for what has shipped so fa
 | Skill | Use it when |
 |---|---|
 | [`job-search-workspace`](skills/job-search-workspace/) | Setting up the folder, importing a CV or a posting, exporting a résumé to PDF |
-| `assessing-job-fit` | You have a posting and want an honest go/no-go before spending an evening on it |
-| `tailoring-applications` | You have decided to apply: résumé, cover letter, screening answers |
+| [`assessing-job-fit`](skills/assessing-job-fit/) | You have a posting and want an honest go/no-go before spending an evening on it |
+| [`tailoring-applications`](skills/tailoring-applications/) | You have decided to apply: résumé, cover letter, screening answers |
 | `researching-companies` | Due diligence before applying, before an interview, or before accepting |
 | `preparing-for-interviews` | An interview is booked |
 | `drafting-outreach-replies` | A recruiter emailed or messaged you on LinkedIn |
@@ -203,8 +203,8 @@ Under construction, one skill at a time.
 
 - [x] Repo scaffold, example workspace
 - [x] `job-search-workspace`
-- [ ] `assessing-job-fit`
-- [ ] `tailoring-applications`
+- [x] `assessing-job-fit`
+- [x] `tailoring-applications`
 - [ ] `researching-companies`
 - [ ] `preparing-for-interviews`
 - [ ] `drafting-outreach-replies`

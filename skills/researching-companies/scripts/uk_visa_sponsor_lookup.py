@@ -45,6 +45,7 @@ import os
 import re
 import sys
 import time
+import unicodedata
 import urllib.error
 import urllib.request
 from typing import Any, Dict, List, Tuple
@@ -68,8 +69,26 @@ PUNCTUATION = re.compile(r"[^\w\s]", re.UNICODE)
 STOPWORDS = {"the", "and", "of", "for", "a", "an"}
 
 
+def fold_accents(text: str) -> str:
+    """Strip diacritics: Nestlé -> Nestle, Peña -> Pena, Ørsted -> Orsted.
+
+    The register stores names unaccented, so a user typing the company's real name
+    finds nothing — and this script frames an empty result as strong evidence they
+    cannot sponsor, which turns a character-encoding detail into a confident wrong
+    answer about someone's right to work.
+    """
+    decomposed = unicodedata.normalize("NFKD", text)
+    folded = "".join(c for c in decomposed if not unicodedata.combining(c))
+    # NFKD does not decompose these; they have no combining form.
+    for src, dst in (("ø", "o"), ("Ø", "O"), ("đ", "d"), ("Đ", "D"),
+                     ("ł", "l"), ("Ł", "L"), ("æ", "ae"), ("Æ", "AE"),
+                     ("œ", "oe"), ("Œ", "OE"), ("ß", "ss"), ("þ", "th")):
+        folded = folded.replace(src, dst)
+    return folded
+
+
 def normalise(name: str) -> str:
-    name = PUNCTUATION.sub(" ", name.lower())
+    name = PUNCTUATION.sub(" ", fold_accents(name).lower())
     name = SUFFIXES.sub(" ", name)
     return " ".join(name.split())
 

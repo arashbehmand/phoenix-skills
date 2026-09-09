@@ -12,13 +12,14 @@ pip install markitdown        # or: uv tool install markitdown
 markitdown resume.pdf > resume.md
 ```
 
-### The one detail that is not obvious
+### Keep the original extension
 
-**Write the file with its original extension.** MarkItDown dispatches on the extension.
-Hand it a temporary file called `tmp` or `upload.tmp` and it will not pick the right
-converter — and it does not raise; it returns something plausible and wrong.
+**Write the file with its original extension**, especially when you are handling bytes
+rather than a path.
 
-Phoenix's `extract_text_from_file` carries the comment and the fix:
+Phoenix hit this hard: the MarkItDown of its day dispatched on the extension, so a
+temporary file called `tmp` picked the wrong converter and returned something plausible
+and wrong without raising. `extract_text_from_file` carries the comment and the fix:
 
 ```python
 suffix = os.path.splitext(filename)[1] if filename else ""
@@ -28,8 +29,15 @@ with tempfile.NamedTemporaryFile(suffix=suffix, delete=False) as tmp:
     tmp.write(file_content)
 ```
 
-So when you are handling bytes rather than a path — a download, a clipboard payload —
-preserve the extension when you write the temp file.
+**Current MarkItDown no longer works that way.** Tested against 0.1.7: plain text written
+to a file named `cv.docx` is still read correctly as text, and a file with no meaningful
+extension is still routed by content. The extension is now a hint that orders which
+converter is tried first, not a hard dispatch — a wrong one costs an extra attempt rather
+than silent corruption.
+
+Preserve it anyway. It is free, it avoids the wasted first attempt, and it keeps the code
+correct against older versions and against other converters that are less forgiving. Just
+do not expect the old failure if you forget: check the output either way.
 
 ### Before reaching for markitdown
 

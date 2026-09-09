@@ -54,6 +54,14 @@ CASES = [
     ("Sage",            "Sage Group",                    True,  True),
     ("Sage",            "Message Labs Ltd",              False, False),
     ("Orbital Freight", "Orbital Freight Ltd",           True,  True),
+    # The register stores names unaccented. Without accent folding a user typing the
+    # company's real name gets "No plausible match", which this script frames as strong
+    # evidence they cannot sponsor — a confident wrong answer about right to work.
+    ("Nestlé",          "Nestle UK Limited",             True,  True),
+    ("NESTLÉ",          "Nestle UK Limited",             True,  True),
+    ("Ørsted",          "Orsted Power (UK) Limited",     True,  True),
+    ("Société Générale","Societe Generale",              True,  True),
+    ("Nestlé",          "Kestrel Grove Limited",         False, False),
 ]
 
 

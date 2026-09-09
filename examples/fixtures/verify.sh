@@ -58,6 +58,26 @@ assert "repair maps list description -> highlights" "len(d['work'][0]['highlight
 assert "repair splits 'Apr 2023 - Present'" \
     "d['work'][0]['startDate'] == '2023-04' and 'endDate' not in d['work'][0]" "$tmp/fixed.json"
 
+check "ISO-formatted date ranges repair" 0 \
+    python3 "$scripts/validate_resume.py" "$here/iso-dates-resume.json" --fix -o "$tmp/iso.json" -q
+assert "an ISO range keeps its end date" \
+    "d['work'][0]['startDate'] == '2021-07' and d['work'][0].get('endDate') == '2024-11'" "$tmp/iso.json"
+assert "a full YYYY-MM-DD range keeps both ends" \
+    "d['work'][1]['startDate'] == '2019-05-01' and d['work'][1].get('endDate') == '2021-06-30'" "$tmp/iso.json"
+assert "a current role still drops endDate" \
+    "d['work'][2]['startDate'] == '2024-12' and 'endDate' not in d['work'][2]" "$tmp/iso.json"
+assert "an en-dash range in education repairs" \
+    "d['education'][0]['startDate'] == '2016-09' and d['education'][0]['endDate'] == '2018-07'" "$tmp/iso.json"
+printf '{"basics":{"name":"T"},"work":[{"name":"A","position":"E","startDate":"2025-13"}]}' > "$tmp/m13.json"
+check "an impossible month is rejected" 1 \
+    python3 "$scripts/validate_resume.py" "$tmp/m13.json" -q
+printf '{"basics":{"name":"T"},"work":[{"name":"A","position":"E","startDate":"2025-02-30"}]}' > "$tmp/feb30.json"
+check "an impossible day is rejected" 1 \
+    python3 "$scripts/validate_resume.py" "$tmp/feb30.json" -q
+printf '{"basics":{"name":"T"},"work":[{"name":"A","position":"E","startDate":"2024-02-29"}]}' > "$tmp/leap.json"
+check "a real leap day is accepted" 0 \
+    python3 "$scripts/validate_resume.py" "$tmp/leap.json" -q
+
 echo
 echo "to_rxresume.py"
 check "converts a valid résumé (v5)" 0 \

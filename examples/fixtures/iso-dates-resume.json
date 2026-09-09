@@ -1,0 +1,26 @@
+{
+  "basics": { "name": "Dilnoza Karimova", "label": "Platform Engineer" },
+  "work": [
+    {
+      "company": "Meridian Systems",
+      "role": "Senior Platform Engineer",
+      "dates": "2021-07 - 2024-11",
+      "description": ["Ran the migration off a single-region deployment."]
+    },
+    {
+      "company": "Aperture Data",
+      "role": "Platform Engineer",
+      "dates": "2019-05-01 - 2021-06-30",
+      "description": ["Owned the ingestion tier."]
+    },
+    {
+      "company": "Cobalt Works",
+      "role": "Engineer",
+      "dates": "2024-12 to Present",
+      "description": ["Current role."]
+    }
+  ],
+  "education": [
+    { "school": "TU Delft", "degree": "MSc", "major": "Computer Science", "dates": "2016-09 – 2018-07" }
+  ]
+}

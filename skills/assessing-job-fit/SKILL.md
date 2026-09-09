@@ -38,6 +38,7 @@ disagree.
 | `profile/resume.json` | yes | Ask for it; **job-search-workspace** covers the import. |
 | `profile/honest-context.md` | yes | Say so and offer to write one. See below. |
 | `research/<company>.md` | no | Mark section 2 "not assessed" and say why. |
+| the UK sponsor register | when sponsorship is a stated constraint | Run the lookup below — do **not** write "could not be checked". |
 | `profile/preferences.md` | no | Skip. |
 | `applications/<slug>/contacts.md` | no | Read it if present — it tells you what stage this is at and what has already been said. |
 | `applications/<slug>/notes.md` | no | Read it if present. |
@@ -67,6 +68,21 @@ reconsidered in a month, and the record is what prevents that.
 Do not soften a dealbreaker into a "consideration". If the candidate wrote that they need
 visa sponsorship and the posting says sponsorship is not available, that is the answer,
 and three paragraphs of encouragement around it wastes their evening.
+
+**Work authorisation is checkable, so check it rather than deferring it.** When
+`honest-context.md` says the candidate needs sponsorship and the employer is UK-based, the
+**researching-companies** skill ships a credential-free lookup against the Home Office
+register:
+
+```bash
+python3 <researching-companies>/scripts/uk_visa_sponsor_lookup.py "<company>" --town "<city>"
+```
+
+It needs one request to gov.uk and no key. Recording "sponsorship could not be verified"
+in `fit.md` when that lookup was available is a worse outcome than a slow answer — it goes
+into the permanent record and the question gets re-asked every time the file is read. If
+the lookup genuinely cannot run, say which of the two it is: not run, or run and
+inconclusive.
 
 ## Work through it in this order
 

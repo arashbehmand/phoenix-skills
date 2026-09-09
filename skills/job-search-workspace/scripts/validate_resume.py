@@ -30,6 +30,26 @@ from typing import Any, Dict, List, Tuple
 
 ISO8601 = re.compile(r"^\d{4}(-\d{2}(-\d{2})?)?$")
 
+
+def iso_valid(value: str) -> bool:
+    """ISO 8601 in shape *and* in range.
+
+    The shape regex alone accepts "2025-13", which every downstream renderer then
+    quietly degrades to "2025" — the date is wrong on the finished page and nothing
+    reported a problem.
+    """
+    if not isinstance(value, str) or not ISO8601.match(value):
+        return False
+    parts = value.split("-")
+    if len(parts) > 1 and not 1 <= int(parts[1]) <= 12:
+        return False
+    if len(parts) > 2:
+        import calendar
+        year, month = int(parts[0]), int(parts[1])
+        if not 1 <= int(parts[2]) <= calendar.monthrange(year, month)[1]:
+            return False
+    return True
+
 # Sections of JSON Resume v1.0.0 and the keys each item may carry.
 KNOWN_KEYS: Dict[str, set] = {
     "basics": {"name", "label", "image", "email", "phone", "url", "summary",
@@ -135,18 +155,33 @@ def parse_loose_date(text: str) -> str | None:
     return None
 
 
+# One date, in any of the forms people actually write.
+_DATE = (r"(?:\d{4}-\d{2}-\d{2}|\d{4}-\d{2}|\d{4}"
+         r"|[A-Za-z]{3,9}\.?\s+\d{4}|\d{1,2}[/.]\d{4}|\d{4}[/.]\d{1,2})")
+_OPEN = r"(?:present|current|now|ongoing|today)"
+# A range is two dates around a separator. Anchored and date-aware on purpose: a naive
+# split on the first hyphen tears "2019-05 - 2021-06" apart inside its own start date,
+# yielding start=2019 and no end — so a job that finished in June 2021 silently renders
+# as "2019 - Present". Repairing a resume into a lie is worse than not repairing it.
+_RANGE = re.compile(rf"^\s*({_DATE})\s*(?:-|–|—|to|until|through)\s*({_DATE}|{_OPEN})\s*$",
+                    re.IGNORECASE)
+_OPEN_ONLY = re.compile(rf"^{_OPEN}$", re.IGNORECASE)
+
+
 def split_date_range(text: str) -> Tuple[str | None, str | None, bool]:
     """Split 'Jan 2025 - May 2025' or '2021 to Present' into (start, end, is_current)."""
-    parts = re.split(r"\s*(?:-|–|—|to|until)\s*", text.strip(), maxsplit=1,
-                     flags=re.IGNORECASE)
-    if len(parts) != 2:
-        single = parse_loose_date(text)
-        return (single, None, False) if single else (None, None, False)
-    start = parse_loose_date(parts[0])
-    tail = parts[1].strip()
-    if tail.lower() in {"present", "current", "now", "ongoing", "today"}:
-        return start, None, True
-    return start, parse_loose_date(tail), False
+    stripped = text.strip()
+
+    match = _RANGE.match(stripped)
+    if match:
+        start = parse_loose_date(match.group(1))
+        tail = match.group(2).strip()
+        if _OPEN_ONLY.match(tail):
+            return start, None, True
+        return start, parse_loose_date(tail), False
+
+    single = parse_loose_date(stripped)
+    return (single, None, False) if single else (None, None, False)
 
 
 # ---------------------------------------------------------------------------
@@ -427,7 +462,13 @@ def _check_dates(item: Dict[str, Any], section: str, path: str,
             findings.append(Finding("error", f"{path}.{field}",
                                     f"must be a string, got {type(value).__name__}"))
             continue
+        if iso_valid(value):
+            continue
         if ISO8601.match(value):
+            findings.append(Finding(
+                "error", f"{path}.{field}",
+                f"{value!r} is ISO-shaped but not a real date — month must be 01-12 "
+                f"and day must exist in that month"))
             continue
         repaired = parse_loose_date(value)
         if repaired:
@@ -444,7 +485,7 @@ def _check_dates(item: Dict[str, Any], section: str, path: str,
 
     start, end = item.get("startDate"), item.get("endDate")
     if (isinstance(start, str) and isinstance(end, str)
-            and ISO8601.match(start) and ISO8601.match(end) and end < start):
+            and iso_valid(start) and iso_valid(end) and end < start):
         findings.append(Finding("warning", f"{path}.endDate",
                                 f"{end!r} is before startDate {start!r}"))
 

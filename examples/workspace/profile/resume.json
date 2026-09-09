@@ -1,0 +1,158 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Mirela Ionescu",
+    "label": "Senior Data Engineer",
+    "email": "mirela.ionescu@example.com",
+    "phone": "+44 7700 900142",
+    "url": "https://mirela-example.dev",
+    "summary": "Data engineer with nine years building batch and event-driven pipelines, currently owning the analytics platform for a 400-person UK retailer. Comfortable across Python, Spark and dbt on AWS, with a track record of cutting pipeline cost and runtime rather than adding to it. Moving toward streaming and platform ownership.",
+    "location": {
+      "city": "Manchester",
+      "countryCode": "GB",
+      "region": "England"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "mirela-ionescu-example",
+        "url": "https://www.linkedin.com/in/mirela-ionescu-example"
+      },
+      {
+        "network": "GitHub",
+        "username": "mirela-example",
+        "url": "https://github.com/mirela-example"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Halcyon Retail Group",
+      "position": "Senior Data Engineer",
+      "location": "Manchester, UK",
+      "startDate": "2023-04",
+      "summary": "Own the analytics platform serving merchandising, supply chain and finance across 180 stores and the e-commerce estate.",
+      "highlights": [
+        "Rebuilt the nightly sales and stock pipeline on Spark and Airflow, cutting the critical-path runtime from 6h10m to 1h50m and moving the 07:00 reporting SLA from 'missed twice a month' to zero misses in 14 months.",
+        "Reduced AWS spend on the data platform by £14k per month (31%) by replacing 40 always-on EMR hours a day with transient clusters and moving cold history to S3 Glacier Instant Retrieval.",
+        "Introduced dbt with contract tests and CI on 240 models, cutting production data incidents attributed to schema drift from 11 in 2023 to 2 in 2025.",
+        "Built a Kafka-based stock-movement feed consumed by three downstream teams, replacing a 15-minute polling job and bringing store-level stock latency under 30 seconds.",
+        "Mentored two junior engineers through their first year, both now shipping to production unsupervised."
+      ]
+    },
+    {
+      "name": "Halcyon Retail Group",
+      "position": "Data Engineer",
+      "location": "Manchester, UK",
+      "startDate": "2021-11",
+      "endDate": "2023-03",
+      "highlights": [
+        "Migrated 60 legacy SQL Server stored procedures to a Redshift and dbt stack, retiring a £40k-per-year licence.",
+        "Wrote the ingestion framework still used for all 27 third-party supplier feeds, reducing new-feed onboarding from roughly three days to half a day.",
+        "Added Great Expectations checks to the ten highest-impact tables, catching a supplier price-feed corruption before it reached the pricing team."
+      ]
+    },
+    {
+      "name": "Vantiq Software",
+      "position": "Data Engineer",
+      "location": "Cluj-Napoca, Romania",
+      "startDate": "2018-09",
+      "endDate": "2020-08",
+      "highlights": [
+        "Delivered ETL and reporting platforms for six client engagements across insurance and telecoms, each 3-9 months.",
+        "Built a Python and Airflow ingestion service processing 4M insurance claim records a day for the largest client.",
+        "Cut a client's month-end close reporting run from 9 hours to 40 minutes by rewriting a row-by-row Oracle procedure as set-based SQL."
+      ]
+    },
+    {
+      "name": "Vantiq Software",
+      "position": "Backend Developer",
+      "location": "Cluj-Napoca, Romania",
+      "startDate": "2016-07",
+      "endDate": "2018-08",
+      "highlights": [
+        "Built and maintained Python and Django REST services for client-facing insurance portals.",
+        "Introduced the team's first automated test suite, taking coverage on the core billing service from 0% to 71%."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Manchester",
+      "url": "https://www.manchester.ac.uk",
+      "area": "Data Science",
+      "studyType": "MSc",
+      "startDate": "2020-09",
+      "endDate": "2021-09",
+      "score": "Distinction",
+      "courses": [
+        "Distributed Systems",
+        "Machine Learning",
+        "Data Engineering at Scale"
+      ]
+    },
+    {
+      "institution": "Technical University of Cluj-Napoca",
+      "area": "Computer Science",
+      "studyType": "BSc",
+      "startDate": "2012-10",
+      "endDate": "2016-06"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Data engineering",
+      "level": "Advanced",
+      "keywords": ["Apache Spark", "Apache Airflow", "dbt", "Kafka", "Great Expectations"]
+    },
+    {
+      "name": "Languages",
+      "level": "Advanced",
+      "keywords": ["Python", "SQL", "Bash", "Scala (reading)"]
+    },
+    {
+      "name": "Cloud and infrastructure",
+      "level": "Intermediate",
+      "keywords": ["AWS (S3, EMR, Redshift, Glue, Lambda)", "Terraform", "Docker", "GitHub Actions"]
+    },
+    {
+      "name": "Data stores",
+      "level": "Advanced",
+      "keywords": ["Redshift", "PostgreSQL", "S3 / Parquet / Iceberg", "SQL Server"]
+    }
+  ],
+  "projects": [
+    {
+      "name": "stockstream",
+      "description": "Open-source toolkit for replaying retail stock-movement events against a local Kafka cluster, used for load-testing consumer services.",
+      "url": "https://github.com/mirela-example/stockstream",
+      "highlights": [
+        "Replays 2M recorded events at configurable rates against a local broker.",
+        "Around 300 GitHub stars and used by two teams outside the original employer."
+      ],
+      "keywords": ["Python", "Kafka", "Docker"],
+      "startDate": "2024-02"
+    }
+  ],
+  "certificates": [
+    {
+      "name": "AWS Certified Data Engineer - Associate",
+      "issuer": "Amazon Web Services",
+      "date": "2024-06"
+    }
+  ],
+  "languages": [
+    {
+      "language": "Romanian",
+      "fluency": "Native speaker"
+    },
+    {
+      "language": "English",
+      "fluency": "Full professional proficiency"
+    },
+    {
+      "language": "French",
+      "fluency": "Limited working proficiency"
+    }
+  ]
+}

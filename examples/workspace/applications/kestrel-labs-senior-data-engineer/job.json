@@ -1,0 +1,48 @@
+{
+  "title": "Senior Data Engineer, Streaming Platform",
+  "company": "Kestrel Labs",
+  "type": "Full-time",
+  "date": "2026-08-24",
+  "description": "Own the streaming ingestion and processing layer for a carbon-accounting platform, leading the migration from nightly Spark batch to Kafka and Flink without breaking audit guarantees.",
+  "location": {
+    "address": "Farringdon",
+    "city": "London",
+    "countryCode": "GB",
+    "region": "England"
+  },
+  "remote": "Hybrid",
+  "salary": "GBP 78000-92000 plus equity",
+  "experience": "Senior",
+  "responsibilities": [
+    "Design and own the streaming ingestion layer: Kafka topics, schema registry, and publishing contracts with twelve internal teams and partners.",
+    "Build stateful stream processing in Flink for emissions calculations that must be reproducible and auditable months later.",
+    "Migrate the existing Spark batch pipelines path by path with no gaps in customer-facing figures.",
+    "Set the data quality and lineage standard for an externally audited platform.",
+    "Translate Emissions Science methodology changes into production changes.",
+    "Mentor two mid-level data engineers."
+  ],
+  "qualifications": [
+    "5+ years building production data platforms",
+    "Deep Python and SQL, owning design as well as implementation",
+    "Production experience with a stream processing framework (Flink strongly preferred; Spark Structured Streaming or Kafka Streams considered)",
+    "Strong Kubernetes — the platform runs on EKS and engineers operate their own services",
+    "Data contracts, schema evolution and backwards compatibility in a multi-producer environment",
+    "Track record of migrating a live system without downtime"
+  ],
+  "skills": [
+    { "name": "Stream processing", "level": "Advanced", "keywords": ["Apache Flink", "Kafka Streams", "Spark Structured Streaming"] },
+    { "name": "Languages", "level": "Advanced", "keywords": ["Python", "SQL"] },
+    { "name": "Infrastructure", "level": "Advanced", "keywords": ["Kubernetes", "EKS", "Terraform"] },
+    { "name": "Data platform", "level": "Intermediate", "keywords": ["Apache Iceberg", "Delta Lake", "schema registry", "data contracts"] }
+  ],
+  "visaSponsorship": {
+    "offered": true,
+    "statedAs": "We are a licensed sponsor and can support Skilled Worker visas.",
+    "verified": true,
+    "verificationNote": "Confirmed against the gov.uk register of licensed sponsors on 2026-08-24 — Kestrel Labs Ltd, Worker route, A rating. See ../../research/kestrel-labs.md."
+  },
+  "meta": {
+    "canonical": "https://example.com/kestrel-labs/careers/senior-data-engineer-streaming",
+    "lastModified": "2026-08-24T09:15:00"
+  }
+}

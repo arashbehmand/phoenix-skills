@@ -222,6 +222,7 @@ Under construction, one skill at a time.
 - [x] `preparing-for-interviews`
 - [x] `drafting-outreach-replies`
 - [x] [`docs/chrome-extension.md`](docs/chrome-extension.md), [`docs/design-notes.md`](docs/design-notes.md)
+- [x] Verified — see [`docs/verification.md`](docs/verification.md)
 
 ## Where this came from
 

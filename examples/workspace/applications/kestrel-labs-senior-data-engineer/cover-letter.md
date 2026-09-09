@@ -11,8 +11,9 @@ missed at all in fourteen months. Before that I moved sixty live SQL Server proc
 onto Redshift and dbt in staged cutovers with no reporting gap.
 
 I should be straight with you about where I do not match the description. I have run Kafka
-as a transport layer, with schema contracts across twenty-seven external publishers and
-three internal consumers, and I built an open-source tool for replaying event streams
+as a transport layer, with published schema contracts and three internal consumers, and I
+designed the ingestion framework that handles schema evolution across twenty-seven
+third-party supplier feeds. I also built an open-source tool for replaying event streams
 against local brokers. I have not owned a Flink or Spark Streaming system serving live
 traffic, and my Kubernetes is reading manifests and deploying to a cluster somebody else
 operated. You asked for strong Kubernetes and production stream processing, so you should

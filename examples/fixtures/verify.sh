@@ -118,6 +118,31 @@ cmp -s "$tmp/s7a.json" "$tmp/s7b.json" && { echo "  ok    --seed makes output re
                                        || { echo "  FAIL  --seed did not make output reproducible"; fail=$((fail + 1)); }
 
 echo
+echo "cross-artifact figure consistency"
+if python3 "$repo/examples/fixtures/check_consistency.py" \
+        "$repo/examples/workspace/applications/kestrel-labs-senior-data-engineer" \
+        >"$tmp/cons" 2>&1; then
+    printf '  ok    every figure in the example letter and answers is supported\n'
+    pass=$((pass + 1))
+else
+    printf '  FAIL  an artifact claims a figure nothing supports\n'
+    sed 's/^/          /' "$tmp/cons"; fail=$((fail + 1))
+fi
+# The check must actually fail on an invented figure, or it proves nothing.
+rm -rf "$tmp/inject"; cp -R "$repo/examples/workspace" "$tmp/inject"
+python3 - "$tmp/inject" <<'INNER'
+import pathlib, sys
+p = pathlib.Path(sys.argv[1]) / "applications/kestrel-labs-senior-data-engineer/cover-letter.md"
+p.write_text(p.read_text().replace("three internal consumers", "forty-one internal consumers"))
+INNER
+if python3 "$repo/examples/fixtures/check_consistency.py" \
+        "$tmp/inject/applications/kestrel-labs-senior-data-engineer" >/dev/null 2>&1; then
+    printf '  FAIL  an invented figure was not detected\n'; fail=$((fail + 1))
+else
+    printf '  ok    an invented figure is detected\n'; pass=$((pass + 1))
+fi
+
+echo
 echo "uk_visa_sponsor_lookup.py name matching (offline)"
 if python3 "$repo/skills/researching-companies/scripts/matcher_cases.py" >"$tmp/match" 2>&1; then
     n=$(tail -1 "$tmp/match")

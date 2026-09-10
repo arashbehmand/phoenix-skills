@@ -198,6 +198,31 @@ else
     printf '  ok    a reintroduced assumption about the user is detected\n'
     pass=$((pass + 1))
 fi
+# It must also catch an em-dash reaching the published LinkedIn copy.
+rm -rf "$tmp/reg2"; mkdir -p "$tmp/reg2"; cp -R "$repo/skills" "$repo/examples" "$tmp/reg2/"
+python3 - "$tmp/reg2" <<'INNER'
+import pathlib, sys
+p = pathlib.Path(sys.argv[1]) / "examples/workspace/profile/linkedin.md"
+p.write_text(p.read_text().replace(
+    "platforms faster and cheaper, not just bigger",
+    "platforms faster and cheaper — not just bigger"))
+INNER
+if python3 "$repo/examples/fixtures/check_skills.py" "$tmp/reg2" >/dev/null 2>&1; then
+    printf '  FAIL  an em-dash in the LinkedIn profile was not detected\n'
+    fail=$((fail + 1))
+else
+    printf '  ok    an em-dash in the LinkedIn profile is detected\n'
+    pass=$((pass + 1))
+fi
+
+echo
+echo "charcount.py section limits (offline)"
+if python3 "$repo/skills/writing-a-linkedin-profile/scripts/charcount_cases.py" >"$tmp/cc" 2>&1; then
+    printf '  ok    %s\n' "$(tail -1 "$tmp/cc")"; pass=$((pass + 1))
+else
+    printf '  FAIL  charcount regressed\n'; sed 's/^/          /' "$tmp/cc"
+    fail=$((fail + 1))
+fi
 
 echo
 echo "uk_visa_sponsor_lookup.py name matching (offline)"

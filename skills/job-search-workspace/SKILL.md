@@ -1,6 +1,6 @@
 ---
 name: job-search-workspace
-description: Use when setting up or working inside a job-search workspace — creating the folder, importing a résumé or job posting from a PDF, DOCX, URL or pasted text, working out where an artifact belongs, working out what the candidate actually wants and will not accept, revising a file that was generated earlier, keeping the application index current, or exporting a résumé to Markdown, JSON Resume, or Reactive Resume for a PDF.
+description: Use when setting up or working inside a job-search workspace — creating the folder, importing a résumé or job posting from a PDF, DOCX, URL or pasted text, working out where an artifact belongs, revising a file that was generated earlier, keeping the application index current, or exporting a résumé to Markdown, JSON Resume, or Reactive Resume for a PDF.
 ---
 
 # Job-search workspace
@@ -16,6 +16,9 @@ profile/
   honest-context.md    Who they are, what they want, what they will not accept.
   tone.md              How anything written in their name should sound.
   preferences.md       Everything else they want done a particular way. Optional.
+  resume-notes.md      Base-résumé revision log: what changed, and what was left out on purpose.
+  linkedin.md          The public profile: headline, About, experience copy.
+  career-plan.md       What they are aiming at, and the gap. Optional.
 
 applications/<company>-<role>/
   job.md               The posting as captured.
@@ -51,10 +54,18 @@ it is not to hand.)
   slug exists to do. The same applies to `research/<company>.md`.
 - **One research file per company**, at `research/<company>.md`, because one company can
   produce several applications.
-- **Never write to `profile/` while working on an application.** `profile/resume.json` is
-  the base; a tailored résumé goes in the application folder. Overwriting the base with a
-  tailored version is unrecoverable without git and quietly poisons every later
-  application.
+- **`profile/` is written before an application and read during one.** The front-of-funnel
+  skills — **interviewing-for-context**, **aligning-career-targets**, **building-a-resume**,
+  **writing-a-linkedin-profile** — own the `profile/` files and are the only things that
+  write there. Once you are working inside `applications/<slug>/`, `profile/` is read-only:
+  a tailored résumé goes in the application folder, never back into `profile/resume.json`,
+  and overwriting the base with a tailored version is unrecoverable without git. If a
+  tailoring session turns up a genuine base improvement, note it and hand it to
+  **building-a-resume** as a separate task rather than folding it in mid-application.
+- **A second base résumé is allowed, but only one.** When `aligning-career-targets` has
+  established a real second track, `building-a-resume` may keep `profile/resume-<track>.json`
+  alongside the master. "A few versions" is one master, at most one variant, and git
+  history — not a pile of files.
 - **`honest-context.md` is background, not source material.** Read it, understand who you
   are writing for, then write. It shapes what you say and rarely appears in what you say.
   Anything the user clearly holds privately works like something a colleague told you in
@@ -76,12 +87,11 @@ are not re-asked:
 1. `resume.json` — see `references/importing-documents.md` if it starts as a PDF or DOCX.
    Validate it before relying on it (below).
 2. `honest-context.md` — the one that changes output quality most. It is written by
-   interviewing the user, the way a career consultant would: what they want next, what they
-   will not accept, what their situation actually is, and what they are genuinely weak at.
-   **`references/honest-context-interview.md` is how to run that conversation** — the
-   questions, and the technique that gets a real answer rather than a tidy one. Prose, not a
-   form. A short honest one beats a long tidy one. There is no schema and there should not
-   be one; the parts that matter differ per person.
+   **interviewing-for-context**, which runs the conversation the way a career consultant
+   would: what they want next, what they will not accept, what their situation actually is,
+   and what they are genuinely weak at. Prose, not a form. A short honest one beats a long
+   tidy one. There is no schema and there should not be one; the parts that matter differ
+   per person.
 3. `tone.md` — how anything written in their name should sound. See `references/tone.md`
    for the template, and for why voice is a file the user owns rather than something the
    skills assume.
@@ -91,9 +101,14 @@ get handled. A per-application override beats any default — record it in that
 application's `notes.md` rather than editing `profile/tone.md` for one job.
 
 If `honest-context.md` is missing, say so before producing anything that depends on it, and
-offer to run the interview. Fifteen minutes of it is enough to start. Do not silently
-proceed with a generic substitute — that is the difference between this and any other
-résumé tool.
+offer to run the interview — **interviewing-for-context**. Fifteen minutes of it is enough
+to start. Do not silently proceed with a generic substitute — that is the difference
+between this and any other résumé tool.
+
+The other `profile/` files are written by the skill that owns each: `resume-notes.md` and
+an optional `resume-<track>.json` by **building-a-resume**, `linkedin.md` by
+**writing-a-linkedin-profile**, `career-plan.md` by **aligning-career-targets**. This skill
+sets up the folder and documents the layout; it does not write those.
 
 ## Intake
 
@@ -224,6 +239,10 @@ the revision log is recoverable if something is overwritten.
 
 ## Next
 
+- No `honest-context.md` yet → **interviewing-for-context**
+- Not sure what to apply for → **aligning-career-targets**
+- The base résumé needs work before you apply anywhere → **building-a-resume**
+- The LinkedIn profile needs work → **writing-a-linkedin-profile**
 - Have a posting and want to know whether to apply → **assessing-job-fit**
 - Decided to apply → **tailoring-applications**
 - Want to know who you would be working for → **researching-companies**

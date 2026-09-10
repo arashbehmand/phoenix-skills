@@ -12,7 +12,21 @@ One application eats an evening. You rewrite the CV, write the cover letter, rea
 company, answer the screening questions, then try to remember what you told the recruiter
 last week.
 
-Seven skills share that work with you:
+Twelve skills, in two groups.
+
+**Before you apply to anything**, they help you get your own material in order:
+
+- **Interview you for honest context.** Fifteen minutes on what you actually want, what you
+  will not accept, and what you are not good at yet. Every other skill reads the result.
+- **Work out what to aim for.** Sort the jobs you have been eyeing into a primary and a
+  secondary track, and name the gap between where you are and where you want to be.
+- **Roast your CV.** A blunt, line-by-line read the way a sceptical recruiter would do it,
+  with a list of what to fix first and what not to touch.
+- **Build the base CV**, iteratively, keeping a log of what changed and what you left off
+  on purpose.
+- **Write your LinkedIn profile** so it points recruiters at the same thing your CV does.
+
+**Then, per application**, they share the evening's work:
 
 - **Decide whether to apply.** An honest read of the job, the company, and how a recruiter
   will see you. It will tell you to skip one.
@@ -86,6 +100,12 @@ to be saved.
 
 **Then just ask.** In your own words:
 
+> Interview me for my honest context.
+
+> Roast my CV, then help me fix it.
+
+> What kinds of roles should I be aiming at?
+
 > Should I apply to this?
 
 > Research them before I answer this recruiter.
@@ -121,6 +141,11 @@ The skills run without it and will tell you the answer is weaker for it.
 | Skill | When it runs |
 |---|---|
 | [`job-search-workspace`](skills/job-search-workspace/) | Setting up the folder, importing a CV, exporting one |
+| [`interviewing-for-context`](skills/interviewing-for-context/) | Before any job ad: recording what you want, will not accept, and are not good at yet |
+| [`aligning-career-targets`](skills/aligning-career-targets/) | You are not sure what to apply for; sorting roles into a primary and secondary track |
+| [`roasting-a-resume`](skills/roasting-a-resume/) | You want your CV or LinkedIn torn apart before you send it anywhere |
+| [`building-a-resume`](skills/building-a-resume/) | Improving the base CV itself, not tailoring it to a posting |
+| [`writing-a-linkedin-profile`](skills/writing-a-linkedin-profile/) | Writing or auditing your own headline, About and experience copy |
 | [`assessing-job-fit`](skills/assessing-job-fit/) | You have a job ad and want a straight answer on whether to apply |
 | [`tailoring-applications`](skills/tailoring-applications/) | You are applying: CV, cover letter, screening answers |
 | [`researching-companies`](skills/researching-companies/) | Before applying, before an interview, or before accepting |
@@ -128,8 +153,11 @@ The skills run without it and will tell you the answer is weaker for it.
 | [`drafting-outreach-replies`](skills/drafting-outreach-replies/) | A recruiter emailed or messaged you |
 | [`reviewing-the-search`](skills/reviewing-the-search/) | You want to know what needs attention across all of it |
 
-`assessing-job-fit` comes first. The tailoring and interview skills read the file it writes,
-so you find out a job is wrong before you spend the evening on it rather than after.
+`assessing-job-fit` comes first once you have a job ad. Before that, the honest-context
+interview is worth fifteen minutes, and if you are not sure what to apply for or the CV
+needs work, the four skills above it help. The tailoring and interview skills read the file
+`assessing-job-fit` writes, so you find out a job is wrong before you spend the evening on
+it rather than after.
 
 ## Getting a PDF
 

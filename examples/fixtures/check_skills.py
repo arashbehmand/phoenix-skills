@@ -41,7 +41,13 @@ PROHIBITION = re.compile(
     re.IGNORECASE)
 
 # Skills that write prose a human reads must point at the tone file.
-WRITING_SKILLS = ["tailoring-applications", "drafting-outreach-replies"]
+WRITING_SKILLS = ["tailoring-applications", "drafting-outreach-replies",
+                  "writing-a-linkedin-profile"]
+
+
+def _writing_skill_dirs(skills: pathlib.Path) -> list[str]:
+    """Only check writing skills that exist yet — they land in separate phases."""
+    return [s for s in WRITING_SKILLS if (skills / s).is_dir()]
 
 
 def main(root: str = ".") -> int:
@@ -65,7 +71,7 @@ def main(root: str = ".") -> int:
             problems.append(f"{rel}:{line_no} guards honest-context instead of framing it "
                             f"as background: {match.group(0)!r}")
 
-    for skill in WRITING_SKILLS:
+    for skill in _writing_skill_dirs(skills):
         blob = "\n".join(p.read_text() for p in (skills / skill).rglob("*.md"))
         if "profile/tone.md" not in blob:
             problems.append(f"skills/{skill} writes prose but never reads profile/tone.md")
@@ -77,6 +83,11 @@ def main(root: str = ".") -> int:
         outbound = list((repo / "examples/workspace/applications").glob("*/cover-letter.md"))
         outbound += list((repo / "examples/workspace/applications").glob("*/questions.md"))
         outbound += [tone]
+        # The LinkedIn profile is published copy strangers read, same as a cover letter.
+        # honest-context.md / career-plan.md / resume-notes.md are private and not checked.
+        linkedin = repo / "examples/workspace/profile/linkedin.md"
+        if linkedin.exists():
+            outbound += [linkedin]
         if forbids_emdash:
             for f in outbound:
                 n = f.read_text().count("—")

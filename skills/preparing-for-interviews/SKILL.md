@@ -20,7 +20,8 @@ confident" — is worse than nothing, because it uses up the time they had.
 | `profile/resume.json` | yes | See **job-search-workspace**. |
 | `applications/<slug>/resume.json` | no | Prefer it if present — it is what they actually sent. |
 | `research/<company>.md` | no | **See the anti-hallucination rule.** Offer to run **researching-companies** first. |
-| `profile/honest-context.md` | no | Read it — it carries the weaknesses worth rehearsing and the questions they dread. |
+| `profile/honest-context.md` | no | Read it — it carries the weaknesses worth rehearsing and the real reasons behind the questions they dread. Those feed sections 2 and 4. |
+| `profile/career-plan.md` | no | Read it if present — the career-vision questions land better when they match the candidate's actual primary track. |
 | `profile/tone.md` | no | Read it if present. Talking points are written in the candidate's voice, so it applies to those. |
 | `applications/<slug>/fit.md` | no | Read it — sections 4 and 5 are the gap analysis, already done. |
 | `applications/<slug>/contacts.md` | no | Read it — it says which round this is, who is in it, and what has already been committed to. |
@@ -147,7 +148,9 @@ answer the requirement, not the question.
 **Include the questions they will not enjoy.** The gap from `fit.md`. The five years at
 one employer with no promotion. The thing `honest-context.md` says they dread. Being asked
 for the first time in the room is far worse than reading it here. If `preferences.md` asks
-for it harsh, honour that.
+for it harsh, honour that. `references/hard-questions.md` is the recurring set — why you
+left, the gap, the short stints, salary, right to work — and how to build a true, short,
+non-defensive answer to each from what the honest context already says.
 
 **Talking points map to a requirement *and* a company value**, and the story snippet is
 written out rather than described. A candidate cannot rehearse "prepare a story about

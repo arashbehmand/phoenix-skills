@@ -47,6 +47,7 @@ says — the same rule as below. And triage writes nothing: its number is a skim
 | `applications/<slug>/job.md` | yes | There is nothing to assess. Ask for the posting. |
 | `profile/resume.json` | yes | Ask for it; **job-search-workspace** covers the import. |
 | `profile/honest-context.md` | yes | Say so and offer to write one. See below. |
+| `profile/career-plan.md` | no | Read it if present — it says which track this posting serves. If the candidate has not worked out what they are aiming for, offer **aligning-career-targets** before spending evenings on individual postings. |
 | `research/<company>.md` | no | Mark section 2 "not assessed" and say why. |
 | the UK sponsor register | when sponsorship is a stated constraint | Run the lookup below — do **not** write "could not be checked". |
 | `profile/preferences.md` | no | Skip. |
@@ -55,10 +56,10 @@ says — the same rule as below. And triage writes nothing: its number is a skim
 
 **Without `honest-context.md` this skill degrades into a generic résumé-to-posting
 comparison**, which is worth very little — the model has no idea what the candidate wants,
-what they will not accept, or what they are weak at. Say that plainly and offer to run the
-interview in `job-search-workspace`, `references/honest-context-interview.md` — fifteen
-minutes of it is enough to make this analysis worth reading. Do not silently substitute
-plausible assumptions about someone's salary expectations or visa situation.
+what they will not accept, or what they are weak at. Say that plainly and offer to run
+**interviewing-for-context** — fifteen minutes of it is enough to make this analysis worth
+reading. Do not silently substitute plausible assumptions about someone's salary
+expectations or visa situation.
 
 If there is no company research, do not invent it. Section 2 says what could not be
 assessed and section 0's confidence score drops accordingly. Offer to run
@@ -104,8 +105,10 @@ inconclusive.
    value.
 2. **Company health check.** Stability, growth, market position, culture — from the
    research file if there is one, and from the posting's own language if there is not.
-3. **Personal alignment.** Against `honest-context.md` specifically. Not "is this a good
-   career move" in the abstract — does it serve what this person said they want.
+3. **Personal alignment.** Against `honest-context.md` specifically, and against
+   `career-plan.md` if there is one — does this posting sit on the primary track, the
+   secondary track, or neither. Not "is this a good career move" in the abstract; does it
+   serve what this person said they want.
 4. **Candidate fit, as they will see it.** Go requirement by requirement. Score what is
    actually evidenced in the résumé, not what the candidate could probably do.
 5. **Synthesise.** Combine into one recommendation.

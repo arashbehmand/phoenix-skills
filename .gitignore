@@ -17,3 +17,6 @@ Thumbs.db
 PLAN.md
 docs/
 test-reports/
+
+# Personal export, never commit
+chats/

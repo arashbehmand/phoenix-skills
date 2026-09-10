@@ -20,6 +20,9 @@ profile/
   honest-context.md    Who she is, what she wants, what she will not accept.
   tone.md              How anything written in her name should sound.
   preferences.md       Everything else she wants done a particular way.
+  resume-notes.md      Base-CV revision log: what changed, and what was left off on purpose.
+  linkedin.md          Public profile copy: headline, About, experience.
+  career-plan.md       Primary and secondary target track, and the gap.
 
 applications/<company>-<role>/
   job.md               The posting as captured.
@@ -46,9 +49,27 @@ everyone else. Whatever is written here wins, including "write like a barrister"
 the truth.
 
 **`profile/honest-context.md`** is the piece with no off-the-shelf equivalent, and the
-reason output does not read like generic AI filler. Note that it is prose, not a form —
-it names a visa constraint, a salary floor, four dealbreakers, and five weaknesses the
-candidate would not put in front of an employer. It gates nearly everything else.
+reason output does not read like generic AI filler. It is written by
+**interviewing-for-context**. Note that it is prose, not a form — it names a visa
+constraint, a salary floor, four dealbreakers, and five weaknesses the candidate would not
+put in front of an employer. It gates nearly everything else.
+
+**`profile/resume-notes.md`** is the base-CV revision log, written by **building-a-resume**.
+Its `## Changes` records what was asked and what moved; its `## Decisions held` records what
+was deliberately left off and why, so a later edit does not reinstate it as an oversight.
+The `## Roast` block is what **roasting-a-resume** appends when asked to write its findings
+down.
+
+**`profile/linkedin.md`** is the source of the candidate's public profile copy, written by
+**writing-a-linkedin-profile**. Headline and About carry a character count against
+LinkedIn's limits; the About marks the "see more" fold; a Risk note flags that a public
+"Open to Work" badge is visible to the current employer. It has no em-dashes, because
+`tone.md` forbids them and strangers read this one.
+
+**`profile/career-plan.md`** is the target-track decision, written by
+**aligning-career-targets**: a primary and a secondary track, the gap split into closeable
+versus a constraint mismatch, a one-line calibration, and a sustainability check that
+explains why Kestrel is live, Trellis was dropped, and Orbital is on hold.
 
 **`applications/kestrel-labs-senior-data-engineer/`** is the fully worked case: a posting
 the candidate should apply for, carried all the way from capture to interview prep.

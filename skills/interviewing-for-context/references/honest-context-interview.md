@@ -56,6 +56,9 @@ This section is the actual craft. Without it the questions below produce a form 
   is three survivable for the right job?" gets a better answer than asking cold.
 - **Record a hedge as a hedge.** Do not promote "I think about £75k?" into a floor. Write it
   with the uncertainty attached and say it is untested.
+- **Write a divergence as a sentence, not a table.** When what a résumé line says and what
+  actually happened do not line up, one sentence in their words carries it. A row-per-entry
+  table invites you to fill every row, and most rows do not need filling.
 - **Write it in their words.** If the file does not sound like one specific person talking,
   it will not do its job.
 
@@ -138,6 +141,12 @@ a disclosure without the second half just reads as a weakness.
 - What would a recruiter pause at, reading this CV? Job hops, a gap, a title that undersells
   the work, a very long tenure, a career change, an employer nobody recognises.
 
+The real reasons behind the questions people dread belong here — why the last job ended,
+what the gap on the CV actually was, why the run of short stints. The short, sayable
+versions of those answers are interview preparation and get built later, in
+`preparing-for-interviews`, `references/hard-questions.md`. Here you just want the truth
+written down.
+
 If they will be writing in a second language, ask which language they think in and whether
 they want to draft in it. That answer belongs in `profile/tone.md`, not here — put it there
 and tell them you have.
@@ -157,6 +166,10 @@ not.
 
 These belong in `profile/resume.json`, not in this file. Put them where they will be used and
 say that you have.
+
+If a whole story comes out — the migration that nearly failed, the thing they shipped
+alone — write its bones and its real numbers into `profile/resume.json` as a highlight. The
+full narrative is interview preparation, not context, and it gets built later.
 
 ### 9. Time and pressure
 
@@ -186,6 +199,12 @@ your judgement and does not get repeated — including in a note explaining that
 repeat it. Naming the private topics you avoided has just filed them somewhere new.
 
 It shapes what gets written. It rarely appears in what gets written.
+
+Some of what you hear is what the person is going through, and what they are hardest on
+themselves about. That shapes how the later skills coach — the tone, the pace, what to
+reassure, which questions to rehearse. It does not shift the read of what their record is
+actually worth. Someone whose confidence is lower than their experience warrants still has
+the experience; assess the evidence, and adjust the delivery.
 
 ## When to revisit
 

@@ -30,7 +30,7 @@ applications/<company>-<role>/
   questions.md         Screening-question answers.
   interview-prep.md
   contacts.md          Per-contact conversation threads, in sentinel blocks.
-  notes.md             Timeline, revision log, open questions.
+  notes.md             Dated timeline, what is next, revision log.
 
 research/<company>.md  Due diligence. One per company, not per application.
 
@@ -72,6 +72,10 @@ the candidate should apply for, carried all the way from capture to interview pr
 - `notes.md` carries the revision log. Read the `cover-letter.md` v3 entry: it records an
   instruction that a later "make it more confident" would silently undo. Re-reading this
   log before every edit is what stops revision N regressing the fix from revision N−2.
+  Its `## Timeline` also holds Friday's interview as a future-dated entry with a time, and
+  its `## Next` holds two things due today — which is what `reviewing-the-search` reads to
+  answer "what needs attention". Orbital's `## Next` is undated because nothing there has
+  a clock on it, and Trellis Bio has no `## Next` at all because it is closed.
 
 **`applications/trellis-bio-analytics-engineer/`** is the opposite case and the more
 useful one. An 80% paper match that is an immediate `AVOID`, because the employer cannot

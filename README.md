@@ -12,7 +12,7 @@ One application eats an evening. You rewrite the CV, write the cover letter, rea
 company, answer the screening questions, then try to remember what you told the recruiter
 last week.
 
-Six skills share that work with you:
+Seven skills share that work with you:
 
 - **Decide whether to apply.** An honest read of the job, the company, and how a recruiter
   will see you. It will tell you to skip one.
@@ -25,6 +25,8 @@ Six skills share that work with you:
   and the answers worth having ready.
 - **Draft replies to recruiters** that know which job they are about, what stage you are at,
   and what you already agreed to.
+- **Tell you what you have forgotten.** What is due, what is booked, and who has gone
+  quiet, read off your own notes.
 
 Everything is saved as plain Markdown and JSON in your folder. You can read it without any of
 this installed, edit it by hand, and keep it in git if you like.
@@ -76,7 +78,8 @@ mkdir ~/job-search && cd ~/job-search
 - `resume.json` is your CV in [JSON Resume](https://jsonresume.org/schema/) format. If you
   only have a PDF or a Word file, hand it over and ask for it to be converted.
 - `honest-context.md` is the private one. See below.
-- `preferences.md` says how you want things written. Optional.
+- `tone.md` says how anything written in your name should sound. Everything else you want
+  done a particular way goes in `preferences.md`. Both optional, both worth ten minutes.
 
 **Save a job ad** to `applications/<company>-<role>/job.md`, or paste the link and ask for it
 to be saved.
@@ -104,7 +107,11 @@ situation. What you are genuinely not good at yet.
 It never goes to an employer. Without it the agent has to guess at your situation, and it
 usually guesses something cheerful and wrong.
 
-Write it badly and quickly rather than not at all. Half a page is enough to start. There is a
+The best way to write it is not to write it. Say "interview me for my honest context" and
+answer the questions — it takes about fifteen minutes, and being asked "what would make you
+turn down an offer you otherwise wanted?" gets further than staring at an empty file.
+
+Otherwise: badly and quickly beats not at all. Half a page is enough to start, and there is a
 [filled-in example](examples/workspace/profile/honest-context.md) if you want a shape to copy.
 
 The skills run without it and will tell you the answer is weaker for it.
@@ -119,6 +126,7 @@ The skills run without it and will tell you the answer is weaker for it.
 | [`researching-companies`](skills/researching-companies/) | Before applying, before an interview, or before accepting |
 | [`preparing-for-interviews`](skills/preparing-for-interviews/) | An interview is booked |
 | [`drafting-outreach-replies`](skills/drafting-outreach-replies/) | A recruiter emailed or messaged you |
+| [`reviewing-the-search`](skills/reviewing-the-search/) | You want to know what needs attention across all of it |
 
 `assessing-job-fit` comes first. The tailoring and interview skills read the file it writes,
 so you find out a job is wrong before you spend the evening on it rather than after.
@@ -139,6 +147,12 @@ One file, `applications.md`, with one row per application and one word for the s
 It is there for the moment a message arrives naming only a company. Search the table, open
 the folder it points to, and the job ad, the fit analysis and the earlier conversation are
 all sitting in it.
+
+What is *due* lives somewhere else: each application's `notes.md` keeps a dated timeline —
+including things that have not happened yet, like Friday's interview — and a `Next` list.
+Ask "what needs attention this week" and you get it read back off those, sorted, with
+whatever has gone quiet. Nothing runs in the background and there is no second file holding
+a copy of your status.
 
 ## See it filled in
 

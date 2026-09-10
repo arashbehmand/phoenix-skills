@@ -94,7 +94,8 @@ something uncomfortable in, note that in the log.
 - Validate any `resume.json` you wrote:
   `python3 <job-search-workspace>/scripts/validate_resume.py applications/<slug>/resume.json`
 - Update `applications.md` — stage `applied` once it has actually gone in, with the date.
-- Add a line to `notes.md`.
+- Add a dated line to `notes.md`, and put anything still owed — a form to finish, a
+  portfolio link to send — under `## Next`.
 - Read the cover letter back to the candidate before it is sent anywhere. Do not send
   anything on their behalf without being asked to.
 

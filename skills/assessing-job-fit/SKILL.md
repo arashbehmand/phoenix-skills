@@ -30,6 +30,16 @@ A role can score well on 1 and 2 and still be wrong on 3. A candidate can be rig
 job on 4 and still be reading a bad one on 1. Answer them separately and say so when they
 disagree.
 
+## Several postings at once
+
+More than about three postings, or "which of these is worth a look", is triage rather than
+analysis: a line each, a score, and a decision about which ones earn the full treatment.
+`references/triage.md` is the procedure.
+
+Two things belong here rather than only there. A dealbreaker is a `drop` whatever the score
+says — the same rule as below. And triage writes nothing: its number is a skim, not the
+`Estimated Match %`, and copying it into a `fit.md` turns a guess into a finding.
+
 ## Read first
 
 | File | Required | If missing |
@@ -45,9 +55,10 @@ disagree.
 
 **Without `honest-context.md` this skill degrades into a generic résumé-to-posting
 comparison**, which is worth very little — the model has no idea what the candidate wants,
-what they will not accept, or what they are weak at. Say that plainly and offer to write
-one from a few questions. Do not silently substitute plausible assumptions about someone's
-salary expectations or visa situation.
+what they will not accept, or what they are weak at. Say that plainly and offer to run the
+interview in `job-search-workspace`, `references/honest-context-interview.md` — fifteen
+minutes of it is enough to make this analysis worth reading. Do not silently substitute
+plausible assumptions about someone's salary expectations or visa situation.
 
 If there is no company research, do not invent it. Section 2 says what could not be
 assessed and section 0's confidence score drops accordingly. Offer to run
@@ -186,8 +197,8 @@ team-size questions; their account, their decision.
 ## After writing it
 
 Update the row in `applications.md` — stage `interested`, or `closed` if the verdict is
-`AVOID` and the candidate agrees. Add a line to `notes.md` recording the verdict and the
-date.
+`AVOID` and the candidate agrees. Add a dated line to the `## Timeline` in `notes.md`
+recording the verdict, and put whatever the verdict says to do next under `## Next`.
 
 Then say what is worth doing next, based on the verdict — not automatically:
 

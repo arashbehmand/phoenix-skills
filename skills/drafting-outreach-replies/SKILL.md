@@ -124,8 +124,9 @@ they have explicitly asked you to, in this conversation, for this message.
 
 Append the sent message to `contacts.md` in that contact's block — see
 `references/contacts-format.md` for the format and the upsert rule. Update the stage in
-`applications.md` if this moved things along, and add a line to `notes.md` for anything
-committed to: a date, a number, a decision.
+`applications.md` if this moved things along, and add a dated line to `notes.md` for
+anything committed to: a date, a number, a decision. Anything owed in return — a take-home,
+availability, a document they asked for — goes under `## Next` with the date it is due.
 
 ## If the environment has more tools
 

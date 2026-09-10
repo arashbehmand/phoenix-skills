@@ -2,7 +2,7 @@
 
 ## Status
 
-`interviewing` — round 2 of 5 on Friday 11 September 2026, 14:00.
+`interviewing` — round 2 of 5.
 
 ## Timeline
 
@@ -19,6 +19,17 @@
 - **2026-09-06** — Dev Raghunathan messaged directly. One design problem, bring a drawing
   surface.
 - **2026-09-08** — Interview prep guide generated.
+- **2026-09-11 14:00** — Round 2, with Dev. The design problem.
+
+## Next
+
+- **by 2026-09-10 10:00** — Chase Priya for the second interviewer's name and focus. She
+  said Monday and it has not come through.
+- **by 2026-09-10** — Fill in the bracket in Talking Point 4 of `interview-prep.md`: what I
+  would actually do about the Kubernetes gap in the first month. Not generated on purpose —
+  it has to be my own plan or it will not survive a follow-up question.
+- Ask about the on-call design in round 3, not round 2. It is a "how do you work" question
+  and the Head of Platform is the right person for it.
 
 ## Revision log
 
@@ -54,16 +65,6 @@ that replaces Phoenix's `refinement_history` column.*
 
 - **v1, 2026-09-08** — Generated. Left the interviewer-specific section empty on purpose;
   Priya has not confirmed the second interviewer yet.
-
-## Open questions
-
-- Second interviewer's name and focus — Priya said Monday, has not come through. Chase
-  this morning if it has not landed by 10:00.
-- Fill in the bracket in Talking Point 4 of `interview-prep.md`: what I would actually do
-  about the Kubernetes gap in the first month. Not generated on purpose — it has to be my
-  own plan or it will not survive a follow-up question.
-- Ask about the on-call design in round 3, not round 2. It is a "how do you work" question
-  and the Head of Platform is the right person for it.
 
 ## Things not to forget
 

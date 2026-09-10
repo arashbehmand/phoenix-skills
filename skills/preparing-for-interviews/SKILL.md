@@ -185,9 +185,11 @@ them — a tool that returns nothing means the data is missing, not that you sho
 
 ## After writing
 
-Add a line to `notes.md` with the interview date and what was generated. If anything was
-deliberately left blank — an unknown interviewer, missing research — record it as an open
-question, so it is obvious what to fill in when the recruiter replies.
+Put the interview in the `## Timeline` in `notes.md` as a dated entry, with the time if
+there is one — that is what makes it show up in a review of the week — and add a dated line
+for the guide itself. If anything was deliberately left blank, an unknown interviewer or
+missing research, put it under `## Next` so it is obvious what to fill in when the recruiter
+replies.
 
 Offer to run a mock interview afterwards. Reading twenty questions is not the same as
 having answered them out loud, and the candidate can only find the sentences that do not

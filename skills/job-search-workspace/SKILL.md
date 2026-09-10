@@ -1,6 +1,6 @@
 ---
 name: job-search-workspace
-description: Use when setting up or working inside a job-search workspace — creating the folder, importing a résumé or job posting from a PDF, DOCX, URL or pasted text, working out where an artifact belongs, revising a file that was generated earlier, keeping the application index current, or exporting a résumé to Markdown, JSON Resume, or Reactive Resume for a PDF.
+description: Use when setting up or working inside a job-search workspace — creating the folder, importing a résumé or job posting from a PDF, DOCX, URL or pasted text, working out where an artifact belongs, working out what the candidate actually wants and will not accept, revising a file that was generated earlier, keeping the application index current, or exporting a résumé to Markdown, JSON Resume, or Reactive Resume for a PDF.
 ---
 
 # Job-search workspace
@@ -26,7 +26,7 @@ applications/<company>-<role>/
   questions.md         Screening-question answers.
   interview-prep.md
   contacts.md          Per-contact conversation threads, in sentinel blocks.
-  notes.md             Timeline, revision log, open questions.
+  notes.md             Dated timeline, what is next, revision log.
 
 research/<company>.md  Due diligence. One per company, not per application.
 
@@ -75,11 +75,13 @@ are not re-asked:
 
 1. `resume.json` — see `references/importing-documents.md` if it starts as a PDF or DOCX.
    Validate it before relying on it (below).
-2. `honest-context.md` — the one that changes output quality most. Ask for it in the
-   user's own words: what they want next, what they will not accept, what their situation
-   actually is, and what they are genuinely weak at. Prose, not a form. A short honest one
-   beats a long tidy one. There is no schema and there should not be one; the parts that
-   matter differ per person.
+2. `honest-context.md` — the one that changes output quality most. It is written by
+   interviewing the user, the way a career consultant would: what they want next, what they
+   will not accept, what their situation actually is, and what they are genuinely weak at.
+   **`references/honest-context-interview.md` is how to run that conversation** — the
+   questions, and the technique that gets a real answer rather than a tidy one. Prose, not a
+   form. A short honest one beats a long tidy one. There is no schema and there should not
+   be one; the parts that matter differ per person.
 3. `tone.md` — how anything written in their name should sound. See `references/tone.md`
    for the template, and for why voice is a file the user owns rather than something the
    skills assume.
@@ -88,9 +90,10 @@ are not re-asked:
 get handled. A per-application override beats any default — record it in that
 application's `notes.md` rather than editing `profile/tone.md` for one job.
 
-If `honest-context.md` is missing, say so before producing anything that depends on it,
-and offer to write it from a few questions. Do not silently proceed with a generic
-substitute — that is the difference between this and any other résumé tool.
+If `honest-context.md` is missing, say so before producing anything that depends on it, and
+offer to run the interview. Fifteen minutes of it is enough to start. Do not silently
+proceed with a generic substitute — that is the difference between this and any other
+résumé tool.
 
 ## Intake
 
@@ -106,6 +109,35 @@ Full detail in `references/importing-documents.md`. The short version:
 Always keep the original text. `job.md` is the record of what was actually advertised; a
 posting can change or disappear while an application is live.
 
+## What goes in `notes.md`
+
+One per application. Free-form, with two conventions that other things depend on.
+
+**Timeline entries are dated and carry a time when there is one, and future dates are
+expected** — a booked interview is a timeline entry, not a sentence under `## Status`.
+**Anything outstanding goes under `## Next`**, with a due date where one exists:
+
+```markdown
+## Timeline
+
+- **2026-09-08** — Interview prep guide generated.
+- **2026-09-11 14:00** — Round 2 of 5. Systems design, bring a drawing surface.
+
+## Next
+
+- **by 2026-09-10** — Chase Priya for the second interviewer's name.
+- Fill in Talking Point 4 myself. It has to be my own plan.
+```
+
+Undated `## Next` items are fine; they are things to do with no clock on them. An
+application with nothing outstanding has no `## Next` section, and that absence is
+meaningful.
+
+Everything else in the file is the user's own — first impressions, standing reminders, why
+a dead application is worth keeping. Do not flatten those into a schema. Only these two
+headings are fixed, and only because **reviewing-the-search** reads them across every
+application to answer "what needs attention".
+
 ## Revising a generated file
 
 This is the part that goes wrong quietly, so it has a hard rule.
@@ -120,12 +152,10 @@ Log what was asked and what changed. Do not log what you deliberately left out, 
 by naming it: a line listing the private topics you avoided has just filed them somewhere
 new.
 
-Without this, revision 4 undoes the fix from revision 2. The realistic case: the user says
-"put the skills gap in explicitly, I'd rather lose the interview now than in round two,"
-and three revisions later says "make it sound more confident" — and the gap disclosure
-disappears, because nothing was carrying that earlier instruction forward. When an
-instruction exists specifically to keep something uncomfortable in, note that in the log
-so a later instruction does not quietly reverse it.
+Without this, revision 4 undoes the fix from revision 2 — "make it sound more confident"
+strips out the disclosure that an earlier instruction put in deliberately, because nothing
+carried that instruction forward. When an instruction exists specifically to keep something
+uncomfortable in, say so in the log.
 
 If a later instruction genuinely conflicts with an earlier one, say so and ask which wins
 rather than picking silently.

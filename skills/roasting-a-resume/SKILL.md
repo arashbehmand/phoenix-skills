@@ -1,6 +1,6 @@
 ---
 name: roasting-a-resume
-description: Use when the candidate wants an adversarial read of their résumé or LinkedIn before applying anywhere — a blunt line-by-line critique, a second opinion on an automated résumé score, or a check on whether they can defend every claim in an interview.
+description: Use when the candidate wants an adversarial read of their résumé or LinkedIn profile before applying anywhere — a blunt line-by-line critique that changes no files, a second opinion on an automated résumé score, or a check on whether they can defend every claim in an interview. Rewriting the LinkedIn copy afterwards is writing-a-linkedin-profile; rewriting the résumé is building-a-resume.
 ---
 
 # Roasting a résumé

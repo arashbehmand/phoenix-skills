@@ -155,11 +155,64 @@ The skills run without it and will tell you the answer is weaker for it.
 | [`drafting-outreach-replies`](skills/drafting-outreach-replies/) | A recruiter emailed or messaged you |
 | [`reviewing-the-search`](skills/reviewing-the-search/) | You want to know what needs attention across all of it |
 
-`assessing-job-fit` comes first once you have a job ad. Before that, the honest-context
-interview is worth fifteen minutes, and if you are not sure what to apply for or the CV
-needs work, the four skills above it help. The tailoring and interview skills read the file
-`assessing-job-fit` writes, so you find out a job is wrong before you spend the evening on
-it rather than after.
+And roughly in the order they help:
+
+```mermaid
+flowchart TD
+    WS["job-search-workspace<br>the folder, and your CV in it"]
+
+    subgraph A ["Once, to get your own material straight"]
+        direction TB
+        IC["interviewing-for-context<br>honest-context.md"]
+        ACT["aligning-career-targets<br>career-plan.md"]
+        RR["roasting-a-resume<br>a critique, nothing saved"]
+        BR["building-a-resume<br>resume.json"]
+        LI["writing-a-linkedin-profile<br>linkedin.md"]
+        IC --> ACT --> RR --> BR --> LI
+        BR -.->|"roast it again"| RR
+    end
+
+    subgraph B ["Per job ad, the evening's work"]
+        direction TB
+        AJF["assessing-job-fit<br>fit.md, and it will tell you to skip one"]
+        RC["researching-companies<br>research/company.md"]
+        TA["tailoring-applications<br>CV, cover letter, screening answers"]
+        PI["preparing-for-interviews<br>interview-prep.md"]
+        AJF --> RC --> TA --> PI
+    end
+
+    subgraph C ["Whenever it comes up"]
+        direction TB
+        DOR["drafting-outreach-replies<br>a recruiter messaged you"]
+        RVW["reviewing-the-search<br>what needs attention this week"]
+    end
+
+    WS --> IC
+    LI --> AJF
+```
+
+That is the happy path, not a rule. Most people start by pasting in a job ad, and that
+works fine.
+
+The order buys you one thing: `assessing-job-fit` writes the file that tailoring and
+interview prep both read, so you find out a job is wrong before you spend the evening on it
+rather than after.
+
+## What actually runs
+
+Nearly all of this is the agent reading Markdown and writing Markdown. Four small Python
+scripts do the parts you should not let a language model eyeball. Standard library only,
+nothing to install.
+
+| Script | Why it exists |
+|---|---|
+| `validate_resume.py` | Checks and repairs `resume.json`. A wrong field name does not raise an error, it silently drops a whole section, and nobody notices until an employer does. |
+| `to_rxresume.py` | Turns your CV into a Reactive Resume import file, and splits a long work history across two pages so the last job does not get cut off. |
+| `charcount.py` | Counts your LinkedIn headline and About against LinkedIn's limits, and flags a count that went stale when you edited the words underneath it. |
+| `uk_visa_sponsor_lookup.py` | Searches the Home Office register of licensed sponsors. It shows you the rows that might be your company and lets you pick. The fuzzy-matching version it replaced once scored OpenAI against a London company called Morena at 66.7, and then wrote down that OpenAI sponsors visas. |
+
+Only the last one touches the network, and only to fetch a public CSV from gov.uk, which it
+then caches for a week.
 
 ## Getting a PDF
 

@@ -1,6 +1,6 @@
 ---
 name: writing-a-linkedin-profile
-description: Use when working on the candidate's own LinkedIn profile — writing or auditing the headline, About and experience copy, ordering the skills, choosing between headline options, or checking the profile points recruiters at the same thing the résumé does.
+description: Use when writing or revising the candidate's own LinkedIn profile — drafting the headline, About and experience copy, ordering the skills, choosing between headline options, or checking the profile points recruiters at the same thing the résumé does. Writes and maintains profile/linkedin.md; for a critique that changes nothing, that is roasting-a-resume.
 ---
 
 # Writing a LinkedIn profile

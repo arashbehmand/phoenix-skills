@@ -1,255 +1,170 @@
 # Phoenix Skills
 
-A job-application toolkit as agent skills. Plain Markdown, a folder of your own files, and
-no service to run.
+A job search toolkit for coding agents. Works with Claude Code, Codex, Cursor, and anything
+else that reads skill files.
 
-This is the knowledge from [Phoenix][phoenix], a job-application assistant built in the
-GPT-4o era, re-expressed for agents that can already plan, search the web, read files and
-write them. Delivering this in 2025 meant shipping a platform: six repositories, FastAPI,
-Postgres with pgvector, RabbitMQ, Caddy, a declarative pipeline engine, a SvelteKit web
-app, a Telegram bot and a PDF renderer. Almost none of that was the value. The value was
-nine prompts and a handful of hard-won details, and an agent in Claude Code, Codex or
-Cursor does the rest natively.
-
-So: keep the knowledge, drop the machinery.
+Your CV, your notes and your applications live in a folder on your computer. The agent reads
+them and helps you apply.
 
 ## What it does
 
-You have found a job posting. From there:
+One application eats an evening. You rewrite the CV, write the cover letter, read up on the
+company, answer the screening questions, then try to remember what you told the recruiter
+last week.
 
-- Decides honestly whether to apply at all, and tells you when not to.
-- Researches the company, including whether they can actually sponsor your visa.
-- Tailors your résumé, writes the cover letter, answers the screening questions.
-- Prepares you for the interview with twenty questions you will not enjoy reading.
-- Drafts replies to recruiters that know what stage you are at and what you already said.
-- Keeps track of all of it in files you own and can read without any of this installed.
+Six skills share that work with you:
 
-**It does not find jobs.** Scope starts at "I have a job description." You find postings
-however you already do — browsing, LinkedIn, a job board, a browser extension. Everything
-after that is what lives here.
+- **Decide whether to apply.** An honest read of the job, the company, and how a recruiter
+  will see you. It will tell you to skip one.
+- **Research the company** before you spend time on it: funding, reviews, salary ranges, red
+  flags, and whether they hold a UK visa sponsor licence.
+- **Rewrite your CV for the job.** It reorders, cuts and rephrases what you have already
+  done. It will not add anything you have not.
+- **Write the cover letter and the screening answers**, using your own numbers.
+- **Prepare you for the interview.** Twenty questions, including the ones you are dreading,
+  and the answers worth having ready.
+- **Draft replies to recruiters** that know which job they are about, what stage you are at,
+  and what you already agreed to.
+
+Everything is saved as plain Markdown and JSON in your folder. You can read it without any of
+this installed, edit it by hand, and keep it in git if you like.
 
 ## What you need
 
-An agent that can read `SKILL.md` files, and a folder. That is the whole list.
+An agent that reads `SKILL.md` files, and a folder.
 
-No API keys. No accounts. No `docker compose up`. Nothing runs in the background. Every
-skill's happy path works with no credential set anywhere — the two optional integrations
-(a LinkedIn MCP server, a free UK Companies House key) add signal but nothing depends on
-them.
-
-Your data stays in a directory on your machine, in Markdown and JSON, versioned in your own
-git repository if you want it versioned.
-
-## The skills
-
-Each lands at `skills/<name>/`. See [Status](#status) for what has shipped so far.
-
-| Skill | Use it when |
-|---|---|
-| [`job-search-workspace`](skills/job-search-workspace/) | Setting up the folder, importing a CV or a posting, exporting a résumé to PDF |
-| [`assessing-job-fit`](skills/assessing-job-fit/) | You have a posting and want an honest go/no-go before spending an evening on it |
-| [`tailoring-applications`](skills/tailoring-applications/) | You have decided to apply: résumé, cover letter, screening answers |
-| [`researching-companies`](skills/researching-companies/) | Due diligence before applying, before an interview, or before accepting |
-| [`preparing-for-interviews`](skills/preparing-for-interviews/) | An interview is booked |
-| [`drafting-outreach-replies`](skills/drafting-outreach-replies/) | A recruiter emailed or messaged you on LinkedIn |
-
-### How they fit together
-
-`assessing-job-fit` is the hub. Phoenix required its output before it would write a cover
-letter or a tailored résumé, which meant it silently ran the fit analysis first every time.
-That dependency is real and the skills keep it: tailoring an application to a job you
-should not take is the most expensive kind of wasted evening.
-
-```
-   profile/resume.json        ────┐
-   profile/honest-context.md  ────┤
-   profile/preferences.md     ────┤
-   applications/<slug>/job.md ────┼──→  assessing-job-fit  ──→  fit.md
-   research/<company>.md      ────┘                    │
-   ▲                                                   │
-   │                                                   ├──→  tailoring-applications
-   researching-companies                               │      resume.json
-                                                       │      cover-letter.md
-                                                       │      questions.md
-                                                       │
-                                                       ├──→  preparing-for-interviews
-                                                       │      interview-prep.md
-                                                       │
-                                                       └──→  drafting-outreach-replies
-                                                              contacts.md
-
-   job-search-workspace underlies all of it: the layout, the schemas, the import and
-   export paths, and the revision discipline.
-```
-
-Read it as: everything needs `profile/`, most things want `research/`, and the three
-producing skills on the right all read `fit.md`.
-
-`profile/honest-context.md` is the piece with no equivalent in off-the-shelf tools. It is
-your private, unvarnished statement of what you actually want, what you will not accept,
-what your visa and salary situation really is, and what you are genuinely bad at. It never
-goes to an employer. It is the difference between output that sounds like you and output
-that sounds like a language model being encouraging.
+No API keys. No account. No server. Nothing runs in the background. Your files stay on your
+machine, and nothing is sent anywhere unless you ask for a web search.
 
 ## Install
 
-Each skill is a directory containing `SKILL.md`, plus optional `references/` and
-`scripts/`. That layout is the same across Claude Code, Codex and most other agents, so
-installing is copying folders.
+Copy the skill folders where your agent looks for them.
 
 ```bash
 git clone https://github.com/arashbehmand/phoenix-skills.git
 cd phoenix-skills
+
+# Claude Code
+mkdir -p ~/.claude/skills && cp -R skills/* ~/.claude/skills/
+
+# Codex
+mkdir -p ~/.codex/skills && cp -R skills/* ~/.codex/skills/
+
+# other agents often read this one
+mkdir -p ~/.agents/skills && cp -R skills/* ~/.agents/skills/
 ```
 
-**Claude Code** — personal, available in every project:
+If yours does none of these, point it at the `skills/` folder and tell it to read `SKILL.md`
+when it needs to. There is nothing inside them tied to a particular tool.
 
-```bash
-mkdir -p ~/.claude/skills
-cp -R skills/* ~/.claude/skills/
-```
-
-Or per project, committed alongside the work: copy into `.claude/skills/` instead.
-
-**Codex** — skills live under `$CODEX_HOME/skills`, which defaults to `~/.codex/skills`:
-
-```bash
-mkdir -p ~/.codex/skills
-cp -R skills/* ~/.codex/skills/
-```
-
-**Other agents** — several read `~/.agents/skills`:
-
-```bash
-mkdir -p ~/.agents/skills
-cp -R skills/* ~/.agents/skills/
-```
-
-If yours does none of these, point it at the `skills/` directory in this repository and
-tell it to read `SKILL.md` when relevant. There is nothing runtime-specific inside them.
-
-To update later, `git pull` and copy again.
-
-`examples/` stays in the cloned repository — it is reference material and fixtures, not
-part of a skill. To check that the scripts work in your environment:
+Check the scripts run on your machine:
 
 ```bash
 ./examples/fixtures/verify.sh
 ```
 
-## Quickstart
+## Start
 
-**1. Make a workspace.** Anywhere you like; your own git repository is a good place.
+**Make a folder.** Anywhere. Your own git repository is a good place.
 
 ```bash
-mkdir ~/job-search && cd ~/job-search && git init
-mkdir -p profile applications research
+mkdir ~/job-search && cd ~/job-search
 ```
 
-**2. Fill in `profile/`.** These are your defaults. Written once, used by every skill, for
-every application. The second one matters most.
+**Add three files to `profile/`.** Ask your agent to do it, or write them yourself.
 
-- `profile/resume.json` — your CV in [JSON Resume][jsonresume] format. If you have a PDF or
-  a Word document, hand it to the agent and ask it to convert; `job-search-workspace`
-  covers the import.
-- `profile/honest-context.md` — the private one. Write it badly and quickly rather than not
-  at all. Salary floor, visa situation, what you will not do, what you are weak at.
-  [Here is a filled-in example.](examples/workspace/profile/honest-context.md)
-- `profile/tone.md` — how anything written in your name should sound. One line is enough:
-  *brief, friendly, plain English, no em-dashes, does not scream AI.* The skills carry no
-  opinion about your voice, so this is where you set it.
-- `profile/preferences.md` — anything else standing. Optional, and it is where "never use
-  the word spearheaded" goes.
+- `resume.json` is your CV in [JSON Resume](https://jsonresume.org/schema/) format. If you
+  only have a PDF or a Word file, hand it over and ask for it to be converted.
+- `honest-context.md` is the private one. See below.
+- `preferences.md` says how you want things written. Optional.
 
-**3. Save a posting** to `applications/<company>-<role>/job.md`.
+**Save a job ad** to `applications/<company>-<role>/job.md`, or paste the link and ask for it
+to be saved.
 
-**4. Ask for what you want.** In plain language:
+**Then just ask.** In your own words:
 
-> Should I apply to this? — `applications/kestrel-labs-senior-data-engineer/job.md`
+> Should I apply to this?
 
-> Research Kestrel Labs before I answer this recruiter.
+> Research them before I answer this recruiter.
 
-> Tailor my CV and write a cover letter for the Kestrel Labs role.
+> Tailor my CV and write the cover letter.
 
-> I have an interview Friday. Prep me.
+> I have an interview on Friday. Prep me.
 
-> Priya just messaged me — here is what she said. Draft a reply.
+> Priya just messaged me. Here is what she said. Draft a reply.
 
-The agent picks the skill. You do not invoke them by name.
+You never name a skill. The agent picks the right one.
 
-**5. Get a PDF.** There is no renderer here and there does not need to be one. Export to
-Reactive Resume v5 JSON, import it at [rxresu.me][rxresume], adjust it visually, download
-the PDF. `job-search-workspace` has the converter and the field-mapping details that make
-the import land correctly.
+## The private file
 
-### See it filled in first
+`profile/honest-context.md` is where you write the things you would not put in a cover
+letter. What you actually want. What you will not accept. Your salary floor. Your visa
+situation. What you are genuinely not good at yet.
 
-[`examples/workspace/`](examples/workspace/) is a complete fictional workspace — one
-candidate, three applications at three different stages, and a company research file. It
-is worth five minutes before you write your own `honest-context.md`.
+It never goes to an employer. Without it the agent has to guess at your situation, and it
+usually guesses something cheerful and wrong.
 
-## Tracking
+Write it badly and quickly rather than not at all. Half a page is enough to start. There is a
+[filled-in example](examples/workspace/profile/honest-context.md) if you want a shape to copy.
 
-There is no board, no daemon and no status enum. Tracking is
-[`applications.md`](examples/workspace/applications.md): one Markdown table, one row per
-application, one word for the stage.
+The skills run without it and will tell you the answer is weaker for it.
 
-It exists to answer one question — when a message arrives naming only a company, which
-folder holds that job description, that fit analysis and that thread? The folder slug does
-the work. The table is how you find it.
+## The skills
 
-Markdown because you can edit it by hand, diff it, and read it on GitHub without any of
-this installed.
+| Skill | When it runs |
+|---|---|
+| [`job-search-workspace`](skills/job-search-workspace/) | Setting up the folder, importing a CV, exporting one |
+| [`assessing-job-fit`](skills/assessing-job-fit/) | You have a job ad and want a straight answer on whether to apply |
+| [`tailoring-applications`](skills/tailoring-applications/) | You are applying: CV, cover letter, screening answers |
+| [`researching-companies`](skills/researching-companies/) | Before applying, before an interview, or before accepting |
+| [`preparing-for-interviews`](skills/preparing-for-interviews/) | An interview is booked |
+| [`drafting-outreach-replies`](skills/drafting-outreach-replies/) | A recruiter emailed or messaged you |
 
-## Getting recruiter threads in
+`assessing-job-fit` comes first. The tailoring and interview skills read the file it writes,
+so you find out a job is wrong before you spend the evening on it rather than after.
 
-Paste them. Select the conversation in LinkedIn or Gmail, copy, paste into the agent —
-nothing to install, and you can redact before pasting. This is the assumed path and
-nothing here depends on anything else.
+## Getting a PDF
 
-If you want a button instead, [Phoenix Pilot](https://github.com/arashbehmand/phoenix-pilot)
-is a separate MIT-licensed Chrome extension that captures a thread in the format
-`contacts.md` expects. It currently requires a backend that is being retired;
-[`docs/chrome-extension.md`](docs/chrome-extension.md) is the proposal for cutting that out
-and turning it into a zero-backend clipboard bridge. A LinkedIn MCP server or browser
-automation cover the same ground if you already run one.
+This does not render PDFs. Ask for the Reactive Resume export, import the file at
+[rxresu.me](https://rxresu.me/), adjust it on screen, and download the PDF from there. The
+converter handles the field mapping, and it splits a long work history across two pages so
+the last job does not get cut off.
 
-## Status
+You can also ask for a Markdown version to paste into an email.
 
-Under construction, one skill at a time.
+## Keeping track
 
-- [x] Repo scaffold, example workspace
-- [x] `job-search-workspace`
-- [x] `assessing-job-fit`
-- [x] `tailoring-applications`
-- [x] `researching-companies`
-- [x] `preparing-for-interviews`
-- [x] `drafting-outreach-replies`
-- [x] [`docs/chrome-extension.md`](docs/chrome-extension.md), [`docs/design-notes.md`](docs/design-notes.md)
-- [x] Verified — see [`docs/verification.md`](docs/verification.md)
+One file, `applications.md`, with one row per application and one word for the stage.
 
-## Where this came from
+It is there for the moment a message arrives naming only a company. Search the table, open
+the folder it points to, and the job ad, the fit analysis and the earlier conversation are
+all sitting in it.
 
-Phoenix was six repositories and a hosted service. Reading it carefully, the pipeline
-engine was dead code, the company researcher's ten scrapers existed to seed a model that
-searched the web anyway, and the job watcher computed a similarity score and threw it away
-into a placeholder string. Meanwhile nine prompt files carried nearly all the value, along
-with a handful of details that only show up after something has broken in production.
+## See it filled in
 
-Those details are ported deliberately and they are the reason this is not just a folder of
-prompts: the JSON Resume field names that silently produce an empty résumé when you get
-them wrong, the company-and-position mapping that was swapped for several commits on the
-strength of an incorrect code comment, the section-overflow split that works around a
-résumé builder refusing to break a block across pages, and the revision discipline that
-stops edit number four from undoing the fix from edit number two.
+[`examples/workspace/`](examples/workspace/) is a complete example: one fictional candidate,
+three applications at three stages, and a company research file. It is the quickest way to
+see what you actually get.
 
-[`docs/design-notes.md`](docs/design-notes.md) records what was dropped and why, so it does
-not get added back.
+## What it will not do
+
+- It does not find jobs. You bring the ad.
+- It does not apply or send anything for you. You read every draft first.
+- It will not put experience on your CV that you do not have. Push it and it will still
+  refuse, and say plainly in the cover letter what you have not done.
+
+## Where it came from
+
+Phoenix was a job application assistant I built in 2024. Six repositories, a web app, a
+database, a message queue, a scraper fleet and a PDF renderer. Reading it back, most of that
+was scaffolding. The value sat in nine prompts and a short list of things I only learned
+after something broke in production.
+
+Agents handle the rest on their own now, so this is the part worth keeping. A few things that
+cost me real time are baked in: the CV field names that quietly produce an empty export when
+you get them wrong, the two fields that stayed swapped for weeks because a code comment said
+they should be, and the rule that stops the fourth edit undoing the fix from the second.
 
 ## Licence
 
-MIT. See [LICENSE](LICENSE).
-
-[phoenix]: https://github.com/arashbehmand/phoenix
-[jsonresume]: https://jsonresume.org/schema/
-[rxresume]: https://rxresu.me/
+MIT. See [LICENSE](LICENSE). Use it however you like.

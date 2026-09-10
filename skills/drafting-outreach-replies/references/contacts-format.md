@@ -90,7 +90,7 @@ In order of preference:
 1. **Paste it.** Works everywhere, needs nothing installed, and the candidate can redact
    before pasting. This is the assumed path.
 2. **The Phoenix Pilot browser extension**, which serialises the open LinkedIn or Gmail
-   thread to the clipboard already in this format. See `docs/chrome-extension.md`.
+   thread to the clipboard already in this format.
 3. **A LinkedIn MCP server**, if the user has chosen to run one — typically exposing
    `get_inbox` and `get_conversation`.
 4. **Browser automation**, reading the page as a person would.

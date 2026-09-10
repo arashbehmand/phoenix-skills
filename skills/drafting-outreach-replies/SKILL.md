@@ -136,7 +136,7 @@ everywhere, and it lets the candidate redact before pasting.
   `get_conversation`, which captures a thread without a browser extension. Message sending
   exists too; do not use it without an explicit, in-the-moment instruction to send.
 - **The Phoenix Pilot browser extension** — captures the open LinkedIn or Gmail thread in
-  the format `contacts.md` expects. See `docs/chrome-extension.md`.
+  the format `contacts.md` expects.
 - **Browser automation or a Gmail connector** — reads the thread as a person would.
 
 `references/contacts-format.md` has the full ordering and the reason LinkedIn is never

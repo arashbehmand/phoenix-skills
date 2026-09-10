@@ -13,5 +13,7 @@ Thumbs.db
 .idea/
 *.swp
 
-# Working notes, not part of the published repo
+# Local working notes, not part of the published repo
 PLAN.md
+docs/
+test-reports/

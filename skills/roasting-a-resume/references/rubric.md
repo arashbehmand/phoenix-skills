@@ -27,16 +27,16 @@ that do.
 ## Packaging problems
 
 - **A headline or summary that is a keyword list.** "Senior Data Engineer | Python | Spark
-  | AWS | Kafka | dbt | Airflow | SQL". Reads as stuffing to a person and is penalised by
-  the parser.
+  | AWS | Kafka | dbt | Airflow | SQL". Reads as stuffing to the person who decides, and
+  buys less from the parser than it used to.
 - **Bullets that bury the result.** The outcome should be the visible part, near the
   front, not the last clause.
 - **Uniform bullets.** Every one opening "Built / Developed / Led / Implemented", every one
   the same length. Real writing varies.
 - **A three-line bullet.** That is two bullets, or one that needs cutting.
 - **The AI tells.** Em-dashes everywhere, tricolons in every sentence, "spearheaded",
-  "leveraged", "seamless", a uniform paragraph rhythm. Roughly one recruiter in five now
-  bins a résumé that reads as generated.
+  "leveraged", "seamless", a uniform paragraph rhythm. A reader who decides a résumé was
+  generated stops crediting what is on it, and that discount lands on the true parts too.
 
 ## Things a reader pauses at
 

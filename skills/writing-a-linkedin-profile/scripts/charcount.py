@@ -5,11 +5,16 @@ The limits move and LinkedIn counts URLs and emoji in ways a plain count does no
 is a guide, not a gate: confirm anything close in LinkedIn before saving. Standard library
 only, no network.
 
+It also checks the `[n/m]` counts written into the file against the real ones. Those are
+written by hand while drafting and go stale the moment a sentence is edited, which is how
+a file ends up claiming 152 characters for a 148-character headline.
+
 Usage:
     python3 charcount.py profile/linkedin.md
     cat profile/linkedin.md | python3 charcount.py
 
-Exit 0 if every counted field is within its limit, 1 if any is over, 2 on a read error.
+Exit 0 if every counted field is within its limit and every written-down count is right,
+1 if a field is over or a count is stale, 2 on a read error.
 """
 
 from __future__ import annotations
@@ -25,7 +30,7 @@ LIMITS = {
 }
 EXPERIENCE_ENTRY_LIMIT = 2000
 
-_ANNOTATION = re.compile(r"\s*`\[\s*\d+\s*/\s*\d+\s*\]`\s*$")
+_ANNOTATION = re.compile(r"\s*`\[\s*(\d+)\s*/\s*\d+\s*\]`\s*$")
 _PLACEHOLDER_LINE = re.compile(r"^\s*<[^>]+>\s*$")
 _FOLD_HELPER = re.compile(r"^\s*First three lines\b", re.IGNORECASE)
 
@@ -35,6 +40,12 @@ def visible_len(text: str) -> int:
     return len(_ANNOTATION.sub("", text).strip())
 
 
+def claimed_len(text: str) -> int | None:
+    """The count written into the file as `[n/m]`, or None if the field carries no count."""
+    match = _ANNOTATION.search(text.strip())
+    return int(match.group(1)) if match else None
+
+
 def _clean_body(lines: list[str]) -> str:
     kept = [
         ln for ln in lines
@@ -42,7 +53,7 @@ def _clean_body(lines: list[str]) -> str:
         and not _PLACEHOLDER_LINE.match(ln)
         and not _FOLD_HELPER.match(ln)
     ]
-    return _ANNOTATION.sub("", "\n".join(kept)).strip()
+    return "\n".join(kept).strip()
 
 
 def sections(md: str) -> list[tuple[str, str]]:
@@ -63,9 +74,9 @@ def sections(md: str) -> list[tuple[str, str]]:
     return out
 
 
-def check(md: str) -> list[tuple[str, int, int, bool]]:
-    """(field, count, limit, within_limit) for every field that has a limit."""
-    rows: list[tuple[str, int, int, bool]] = []
+def check(md: str) -> list[tuple[str, int, int, bool, int | None]]:
+    """(field, count, limit, within_limit, count_written_in_the_file) per limited field."""
+    rows: list[tuple[str, int, int, bool, int | None]] = []
     in_experience = False
     for name, body in sections(md):
         if name == "Experience":
@@ -78,11 +89,11 @@ def check(md: str) -> list[tuple[str, int, int, bool]]:
         if name in LIMITS:
             in_experience = False
             n = visible_len(body)
-            rows.append((name, n, LIMITS[name], n <= LIMITS[name]))
+            rows.append((name, n, LIMITS[name], n <= LIMITS[name], claimed_len(body)))
         elif in_experience and body:
             n = visible_len(body)
             rows.append((f"Experience: {name}", n, EXPERIENCE_ENTRY_LIMIT,
-                         n <= EXPERIENCE_ENTRY_LIMIT))
+                         n <= EXPERIENCE_ENTRY_LIMIT, claimed_len(body)))
     return rows
 
 
@@ -102,13 +113,15 @@ def main(argv: list[str]) -> int:
         return 0
 
     width = max(len(r[0]) for r in rows)
-    over = False
-    for name, n, limit, ok in rows:
-        flag = "ok  " if ok else "OVER"
-        if not ok:
-            over = True
-        print(f"  {flag}  {name.ljust(width)}  {n:>5} / {limit}")
-    return 1 if over else 0
+    problems = False
+    for name, n, limit, ok, claimed in rows:
+        stale = claimed is not None and claimed != n
+        flag = "OVER" if not ok else "STALE" if stale else "ok"
+        note = f"   file says {claimed}" if stale else ""
+        if not ok or stale:
+            problems = True
+        print(f"  {flag.ljust(5)} {name.ljust(width)}  {n:>5} / {limit}{note}")
+    return 1 if problems else 0
 
 
 if __name__ == "__main__":

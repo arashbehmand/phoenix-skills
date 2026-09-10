@@ -11,7 +11,7 @@ signal. The current employer is named plainly; nothing here says "actively looki
 
 ## Headline
 
-Senior Data Engineer at Halcyon Retail Group. I make data platforms faster and cheaper, not just bigger. Moving toward streaming and near real time.  `[152/220]`
+Senior Data Engineer at Halcyon Retail Group. I make data platforms faster and cheaper, not just bigger. Moving toward streaming and near real time.  `[148/220]`
 
 ## About
 
@@ -25,7 +25,7 @@ What I want next is streaming and near real time. I have run Kafka as a transpor
 
 Outside work I maintain stockstream, a small open source tool for replaying retail stock events against a local Kafka cluster. It has around 300 stars and is used by a couple of teams I have never met.
 
-Tools I reach for: Python, Spark, Airflow, dbt, Kafka, and AWS. I read Scala. I am currently working through Flink, and learning to operate Kubernetes properly rather than just deploy onto a cluster someone else runs.  `[1180/2600]`
+Tools I reach for: Python, Spark, Airflow, dbt, Kafka, and AWS. I read Scala. I am currently working through Flink, and learning to operate Kubernetes properly rather than just deploy onto a cluster someone else runs.  `[1339/2600]`
 
 ## Experience
 

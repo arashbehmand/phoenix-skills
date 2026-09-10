@@ -74,6 +74,34 @@ Do not invent. If a date is ambiguous or a job title is unreadable, ask. A résu
 factual document and a plausible guess in it is a lie the candidate then has to defend in
 an interview.
 
+## An existing LinkedIn profile
+
+Do not ask the candidate to copy their profile out section by section. LinkedIn will hand
+over the whole thing: on their own profile, **More → Save to PDF**. It downloads in a
+second and carries the headline, the About, every experience entry, education and skills,
+which is everything **writing-a-linkedin-profile** and **roasting-a-resume** need. Convert
+it like any other document:
+
+```bash
+markitdown ~/Downloads/Profile.pdf > /tmp/linkedin.md
+```
+
+Then write the parts worth keeping into `profile/linkedin.md`.
+
+Two things to know about that file:
+
+- **It is a rendering, not the source text.** Read the conversion before building on it,
+  the same rule as any other PDF. Where it has clearly mangled a section, ask for that
+  section pasted rather than reconstructing it.
+- **Never take character counts from it.** The PDF re-flows the text, so counting it gives
+  a third number that matches neither `profile/linkedin.md` nor the LinkedIn editor. Counts
+  come from `writing-a-linkedin-profile`, `scripts/charcount.py`, and the one that decides
+  is what the live field shows.
+
+If the PDF is missing something, Settings → Data privacy → **Get a copy of your data**
+returns the profile as CSV. It is slower and it is the fallback, not the first move.
+Pasting works too, and for a headline on its own it is quicker than any of this.
+
 ## A job posting from a URL
 
 Fetch it yourself. Phoenix had a `UrlImporter` that never actually fetched anything — it

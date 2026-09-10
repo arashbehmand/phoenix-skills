@@ -23,6 +23,7 @@ overdue, or miss one entirely.
 | `applications.md` | The roster and the stage of each application |
 | `applications/*/notes.md` | `## Timeline` for what has happened and what is booked; `## Next` for what is outstanding |
 | `applications/*/contacts.md` | The date of the last message in each thread, where one exists |
+| `profile/career-plan.md`, `honest-context.md`, `linkedin.md`, `resume-notes.md` | **Their dates only.** See "The profile goes stale too" below |
 
 `job-search-workspace` documents both note conventions: timeline entries are dated and may
 be in the future, `## Next` items may carry a `**by <date>**`. Applications written before
@@ -30,7 +31,9 @@ those conventions will have neither — say so rather than reporting them as hav
 outstanding.
 
 Do not read `fit.md`, `resume.json` or the other artifacts. This is a review of state, not
-of content, and reading everything makes it slow enough that nobody runs it.
+of content, and reading everything makes it slow enough that nobody runs it. The `profile/`
+files are the one exception, and only for their dates — a date is state, and those four
+files are the only things in the workspace that go stale without anyone touching them.
 
 ## What to produce
 
@@ -54,6 +57,36 @@ three days"* — then the list.
 
 Each item names the application, what is to be done, and when. Keep the user's own wording
 from `## Next`; they wrote it in the terms that will make sense to them.
+
+## The profile goes stale too
+
+Every application-side file gets updated because something happened. The `profile/` files
+do not: nobody gets an email that says the career plan is now nine weeks old. So this is
+the only skill that will ever notice, and it is the reason those files carry a date at the
+top — a `Last updated:` line, a `*Generated <date>*` line, or the newest dated entry in
+their log. **Read that line, not the file.**
+
+What each one is waiting for:
+
+- **`honest-context.md`** — a rejection that stung, an offer, a dealbreaker tested for
+  real, or about three months. The events matter more than the calendar: a file written
+  last month with two rejections behind it is staler than one from the spring with none.
+- **`career-plan.md`** — the same triggers, and it names its own in a `Revisit after:`
+  line. Read that line and use what it says.
+- **`resume-notes.md`** — applications going out for weeks while the base résumé has not
+  been touched. Tailoring papers over a weak base once per application; fixing it once is
+  cheaper.
+- **`linkedin.md`** — last edited before the target changed, which means it is pointing
+  recruiters at the old thing.
+
+**Report this as one closing line, not a group of its own.** Nothing here is due on a
+date, and none of it should push the actual week's work down the page. "Your honest context
+is from 12 May and three rejections have landed since, which is the trigger it names" is
+the whole report. When nothing is stale, there is no line — the same rule as any other
+empty group. If the user wants to act on it, the skill that owns the file does the work.
+
+If a file does not exist at all, say so once, name the skill that writes it, and move on.
+A missing `career-plan.md` is not overdue work; it is a thing they have not done yet.
 
 ## Gone quiet is a judgement, not a threshold
 
@@ -116,6 +149,9 @@ sponsor check not run.
 Trellis Bio is closed. Nothing else in the workspace.
 ```
 
+Nothing in that example is stale, so it carries no closing line about the profile. When
+something is, it goes last, after the reconciliation line.
+
 ## If the environment has more tools
 
 None are needed; this reads local files. If a calendar connector is available and the user
@@ -128,3 +164,6 @@ asks, a booked interview can be put in the calendar — ask first, and the timel
 - An interview is on the agenda → **preparing-for-interviews**
 - A posting is sitting at `interested` with nothing run against it → **assessing-job-fit**
 - The notes are thin because the conventions are not being followed → **job-search-workspace**
+- The honest context is stale → **interviewing-for-context**
+- The plan is stale, or the rejections are all on one track → **aligning-career-targets**
+- The base résumé has gone untouched while applications went out → **building-a-resume**

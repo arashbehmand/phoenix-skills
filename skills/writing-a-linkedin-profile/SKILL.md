@@ -33,6 +33,18 @@ disagrees with the CV is worse than a thin one. `building-a-resume` comes before
 | `profile/career-plan.md` | no | The primary track. Every section bends toward it. |
 | `profile/resume-notes.md` | no | Read `## Decisions held` so the profile and the résumé keep telling the same story. |
 
+## Getting the current profile in
+
+An audit or a rewrite needs what is on the profile today, and the candidate should not have
+to copy it out by hand. LinkedIn exports it: **More → Save to PDF** on their own profile,
+then import it the way any document gets imported — **job-search-workspace**,
+`references/importing-documents.md` has the command and the two traps, one of which is that
+character counts must never come from the PDF. Pasting works as well, and for a headline on
+its own it is quicker.
+
+However it arrives, `profile/linkedin.md` is the file that gets maintained. The export is an
+import, not a second copy to keep in step.
+
 ## Modes
 
 All three write the one file.
@@ -123,8 +135,9 @@ profile any more than for a résumé.
 Nothing here requires them. **Web search** can check what strong profiles for the target
 role currently look like, which helps calibrate a headline — it is not a source of facts
 about the candidate. A **LinkedIn MCP server**, if the candidate already runs one, can pull
-their current profile text so it does not have to be pasted; sending or changing anything
-on the account needs an explicit, in-the-moment instruction, and even then the file is the
+their current profile text and save the export step. It is a convenience, not the normal
+path — the PDF above needs no server and no account access. Sending or changing anything on
+the account needs an explicit, in-the-moment instruction, and even then the file is the
 draft and LinkedIn is where they apply it.
 
 ## Next

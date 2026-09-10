@@ -25,7 +25,7 @@ helps.
 
 | File | Required | If missing |
 |---|---|---|
-| `profile/resume.json` | yes | Nothing to roast. **job-search-workspace** covers the import. A LinkedIn export pasted in works too. |
+| `profile/resume.json` | yes | Nothing to roast. **job-search-workspace** covers the import. To roast a LinkedIn profile instead, **More → Save to PDF** on LinkedIn and import that — `references/importing-documents.md` — or take it pasted. |
 | `profile/honest-context.md` | yes | Say so; offer **interviewing-for-context**. Without it a roast cannot tell a thin claim from a solid one that is undersold, and turns into generic résumé advice. |
 | `profile/career-plan.md` | no | Read if present — it says which roles the résumé is being judged against. Absent, ask before starting. |
 | `profile/preferences.md` | no | Length, banned words, what to lead with. A roast should not fight a standing decision. |
@@ -84,17 +84,19 @@ does not support" is the job. "You clearly overreached here" is not.
 
 ## If the candidate wants it written down
 
-Offer to append a dated block to `profile/resume-notes.md`: the action list, and — the part
-that matters later — anything the roast raised that the candidate has decided **not** to
-act on, and why. That is what stops the same point being re-raised every time the résumé is
-opened. Ask first, and write it in their words.
+Offer to append a dated `## Roast — <date>` block to `profile/resume-notes.md`, in the
+shape **building-a-resume** documents: the action list, and — the part that matters later —
+anything the roast raised that the candidate has decided **not** to act on, and why. That
+is what stops the same point being re-raised every time the résumé is opened. Ask first,
+and write it in their words.
 
 ## If the environment has more tools
 
 Nothing here requires them. This reads local files and talks. Web search is not a way to
 check a claim about the candidate — that comes from the workspace and from them. If a
 LinkedIn MCP server is already running and the candidate wants their live profile roasted,
-pulling the text that way is fine; their account, their call.
+pulling the text that way is fine; their account, their call. It saves an export and
+nothing else — the PDF route needs no server.
 
 ## Next
 

@@ -82,6 +82,11 @@ undoing the fix from revision N-2 — the rule the per-application notes already
 ## Decisions held
 
 - <a fact deliberately kept off the résumé, and why>
+
+## Roast — <date>
+
+What the last roast raised, what was acted on, and what was deliberately not, with the
+reason. One block per roast, newest first.
 ```
 
   `## Decisions held` is the important half. "Left the 27 GitHub stars off — a small number

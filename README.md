@@ -106,6 +106,8 @@ to be saved.
 
 > What kinds of roles should I be aiming at?
 
+> Here is my LinkedIn saved as a PDF. Rewrite the headline and the About.
+
 > Should I apply to this?
 
 > Research them before I answer this recruiter.

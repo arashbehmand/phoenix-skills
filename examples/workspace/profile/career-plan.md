@@ -1,6 +1,6 @@
 # Career plan
 
-*Generated 2026-09-01 · inputs: profile/honest-context.md, profile/resume.json, six saved job descriptions*
+*Generated 2026-09-01 · inputs: profile/honest-context.md, profile/resume.json, six job descriptions she pasted in*
 *Revisit after: a rejection that stung, an offer, or a dealbreaker tested in real life. Stale after about three months.*
 
 ## Primary track

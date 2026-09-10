@@ -68,11 +68,14 @@ dates in the entry body if they matter.
 Applicant tracking systems parse the file before a human reads it, and then a human reads
 it. Both stages have moved on from the advice that is still everywhere.
 
-- **Keyword density is now penalised, not rewarded.** Workday and others flag a term that
-  appears far more often than natural writing would produce it. Use a skill or tool name
-  **once, in context, on the bullet where the candidate actually did the thing.** Three
-  genuine uses beat ten. A "Skills" wall of eighty keywords reads as padding to the parser
-  and as noise to the human.
+- **Stuffing keywords is not the win it is sold as.** The advice to repeat a term until the
+  parser notices is old, and the systems have been moving against it for years. Exactly how
+  much any one of them docks for density is not knowable from outside, so do not plan
+  around a number. Plan around the part that is certain: a person reads the file after the
+  parser does, and a term used more often than natural writing would produce it is obvious
+  to them. Use a skill or tool name **once, in context, on the bullet where the candidate
+  actually did the thing.** Three genuine uses beat ten. A "Skills" wall of eighty keywords
+  reads as padding to a parser and as noise to a human.
 - **The rejection is still a human's.** The parser feeds a database; a person searches it
   and decides. A résumé does not get auto-binned for a missing keyword nearly as often as
   the internet claims — but a person who sees keyword-stuffing stops reading.
@@ -84,11 +87,16 @@ it. Both stages have moved on from the advice that is still everywhere.
   boxes, headers and footers, and images are not a risk in the JSON, but a PDF template can
   reintroduce them.
 
+This section is dated in its heading on purpose. The mechanics move every year or two; the
+direction has been steady for a decade, which is less gaming and more writing. Where a rule
+here stops matching what candidates actually report back, believe them and change it.
+
 ## Do not let it read as generated
 
-Roughly one recruiter in five now rejects a résumé that reads as AI-written on sight, and
-60 to 80% of what they receive shows the tells. The discount lands on the facts too. The
-moves that matter:
+Recruiters now read a great many applications a model wrote, and they have got fast at
+spotting them. Some bin those on sight. More simply discount everything on the page,
+including the parts that are true and took years to earn. The candidate pays either way,
+and the fix costs nothing. The moves that matter:
 
 - **Vary the bullets.** Not every one opening "Built / Developed / Led / Implemented". Not
   every one the same length.

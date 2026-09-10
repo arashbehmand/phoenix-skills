@@ -174,6 +174,30 @@ if python3 "$repo/examples/fixtures/check_consistency.py" \
 else
     printf '  ok    an invented figure is detected\n'; pass=$((pass + 1))
 fi
+# The LinkedIn profile is published copy too, checked against the profile alone.
+if python3 "$repo/examples/fixtures/check_consistency.py" \
+        --profile "$repo/examples/workspace/profile" >"$tmp/cons-li" 2>&1; then
+    printf '  ok    every figure in the example LinkedIn profile is supported\n'
+    pass=$((pass + 1))
+else
+    printf '  FAIL  the LinkedIn profile claims a figure nothing supports\n'
+    sed 's/^/          /' "$tmp/cons-li"; fail=$((fail + 1))
+fi
+rm -rf "$tmp/inject-li"; cp -R "$repo/examples/workspace" "$tmp/inject-li"
+python3 - "$tmp/inject-li" <<'INNER'
+import pathlib, sys
+p = pathlib.Path(sys.argv[1]) / "profile/linkedin.md"
+p.write_text(p.read_text().replace("used by a couple of teams I have never met",
+                                   "used by 87 teams I have never met"))
+INNER
+if python3 "$repo/examples/fixtures/check_consistency.py" \
+        --profile "$tmp/inject-li/profile" >/dev/null 2>&1; then
+    printf '  FAIL  an invented figure in the LinkedIn profile was not detected\n'
+    fail=$((fail + 1))
+else
+    printf '  ok    an invented figure in the LinkedIn profile is detected\n'
+    pass=$((pass + 1))
+fi
 
 echo
 echo "skill policy"
@@ -222,6 +246,31 @@ if python3 "$repo/skills/writing-a-linkedin-profile/scripts/charcount_cases.py" 
 else
     printf '  FAIL  charcount regressed\n'; sed 's/^/          /' "$tmp/cc"
     fail=$((fail + 1))
+fi
+# The example is the output contract, so run the real script over it — under every limit,
+# and with the hand-written `[n/m]` counts matching what the script computes.
+if python3 "$repo/skills/writing-a-linkedin-profile/scripts/charcount.py" \
+        "$repo/examples/workspace/profile/linkedin.md" >"$tmp/cc-ex" 2>&1; then
+    printf '  ok    the example LinkedIn profile is within limits and its counts are right\n'
+    pass=$((pass + 1))
+else
+    printf '  FAIL  the example LinkedIn profile is over a limit or its counts are stale\n'
+    sed 's/^/          /' "$tmp/cc-ex"; fail=$((fail + 1))
+fi
+rm -rf "$tmp/stale"; cp -R "$repo/examples/workspace" "$tmp/stale"
+python3 - "$tmp/stale" <<'INNER'
+import pathlib, sys
+p = pathlib.Path(sys.argv[1]) / "profile/linkedin.md"
+p.write_text(p.read_text().replace("Moving toward streaming and near real time.",
+                                   "Moving toward streaming."))
+INNER
+if python3 "$repo/skills/writing-a-linkedin-profile/scripts/charcount.py" \
+        "$tmp/stale/profile/linkedin.md" >/dev/null 2>&1; then
+    printf '  FAIL  an edited headline left a stale count and was not detected\n'
+    fail=$((fail + 1))
+else
+    printf '  ok    an edited headline with a stale count is detected\n'
+    pass=$((pass + 1))
 fi
 
 echo

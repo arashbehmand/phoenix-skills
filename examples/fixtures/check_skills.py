@@ -45,11 +45,6 @@ WRITING_SKILLS = ["tailoring-applications", "drafting-outreach-replies",
                   "writing-a-linkedin-profile"]
 
 
-def _writing_skill_dirs(skills: pathlib.Path) -> list[str]:
-    """Only check writing skills that exist yet — they land in separate phases."""
-    return [s for s in WRITING_SKILLS if (skills / s).is_dir()]
-
-
 def main(root: str = ".") -> int:
     repo = pathlib.Path(root)
     skills = repo / "skills"
@@ -71,7 +66,10 @@ def main(root: str = ".") -> int:
             problems.append(f"{rel}:{line_no} guards honest-context instead of framing it "
                             f"as background: {match.group(0)!r}")
 
-    for skill in _writing_skill_dirs(skills):
+    for skill in WRITING_SKILLS:
+        if not (skills / skill).is_dir():
+            problems.append(f"skills/{skill} is missing, so nothing checks its voice")
+            continue
         blob = "\n".join(p.read_text() for p in (skills / skill).rglob("*.md"))
         if "profile/tone.md" not in blob:
             problems.append(f"skills/{skill} writes prose but never reads profile/tone.md")
@@ -88,6 +86,9 @@ def main(root: str = ".") -> int:
         linkedin = repo / "examples/workspace/profile/linkedin.md"
         if linkedin.exists():
             outbound += [linkedin]
+        else:
+            problems.append("examples/workspace/profile/linkedin.md is missing; the "
+                            "published-copy check has nothing to run on")
         if forbids_emdash:
             for f in outbound:
                 n = f.read_text().count("—")

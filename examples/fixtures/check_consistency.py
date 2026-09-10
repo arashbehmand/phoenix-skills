@@ -9,6 +9,10 @@ What it checks: every number claimed in the cover letter or the screening answer
 appears somewhere in the resume, the posting, or the honest context. That catches an
 invented figure, which is the common failure.
 
+The LinkedIn profile gets the same treatment, against the profile alone. It is published
+copy that strangers read, so an invented figure in it costs the same as one in a letter —
+but it belongs to no application, so there is no posting in its evidence base.
+
 What it does NOT catch, and you should not rely on it to: a figure that is real but
 attached to the wrong thing. The bug that prompted this script was exactly that — a
 live agent run found the example cover letter claiming "schema contracts across
@@ -17,7 +21,9 @@ feeds to the ingestion framework and three consumers to Kafka. Both numbers were
 and both appear in the evidence, so this script passes it. Two true facts welded into
 one false sentence needs a reader, and an interviewer holding the CV is that reader.
 
-Usage: python3 check_consistency.py <application-folder> [--profile <profile-dir>]
+Usage:
+    python3 check_consistency.py <application-folder> [--profile <profile-dir>]
+    python3 check_consistency.py --profile <profile-dir>      # checks linkedin.md
 """
 
 from __future__ import annotations
@@ -46,6 +52,11 @@ UNITS = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5,
 
 ISO_DATE = re.compile(r"\b\d{4}-\d{2}(?:-\d{2})?\b")
 
+# profile/linkedin.md carries two kinds of number that are not claims about the candidate:
+# the `[148/220]` character counts, and the markers of the ordered "Skills, in order" list.
+ANNOTATION = re.compile(r"`\[\s*\d+\s*/\s*\d+\s*\]`")
+LIST_MARKER = re.compile(r"^\s*\d+\.\s", re.M)
+
 
 def figures(text: str) -> set[str]:
     """Every numeric claim in a piece of prose, normalised to digits.
@@ -65,37 +76,57 @@ def figures(text: str) -> set[str]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("folder")
+    parser.add_argument("folder", nargs="?", default=None,
+                        help="an applications/<slug> folder; omit to check the profile alone")
     parser.add_argument("--profile", default=None)
     args = parser.parse_args()
 
-    app = pathlib.Path(args.folder)
-    profile = pathlib.Path(args.profile) if args.profile else app.parent.parent / "profile"
+    if args.folder is None and args.profile is None:
+        parser.error("give an application folder, or --profile to check linkedin.md")
 
-    # The evidence base: what the candidate can actually support.
+    app = pathlib.Path(args.folder) if args.folder else None
+    profile = (pathlib.Path(args.profile) if args.profile
+               else app.parent.parent / "profile")
+
+    # The evidence base: what the candidate can actually support. The posting is part of it
+    # for an application, because a letter may quote the employer's own figures back.
+    evidence_paths = [profile / "resume.json", profile / "honest-context.md"]
+    if app is not None:
+        evidence_paths = [app / "resume.json", app / "job.md"] + evidence_paths
+
     evidence = ""
-    for path in (app / "resume.json", profile / "resume.json",
-                 app / "job.md", profile / "honest-context.md"):
+    for path in evidence_paths:
         if path.exists():
             evidence += path.read_text() + "\n"
     if not evidence:
-        print(f"{app}: no resume.json or job.md to check against", file=sys.stderr)
+        wanted = "resume.json or job.md" if app is not None else "resume.json"
+        where = app if app is not None else profile
+        print(f"{where}: no {wanted} to check against", file=sys.stderr)
         return 2
     supported = figures(evidence)
 
+    if app is not None:
+        outbound = [(name, app / name) for name in ("cover-letter.md", "questions.md")]
+        label, missing_from = app.name, "resume, the posting or the honest context"
+    else:
+        outbound = [("linkedin.md", profile / "linkedin.md")]
+        label, missing_from = profile.name, "resume or the honest context"
+
     problems = []
-    for name in ("cover-letter.md", "questions.md"):
-        path = app / name
+    for name, path in outbound:
         if not path.exists():
             continue
-        for claim in sorted(figures(path.read_text())):
+        text = path.read_text()
+        if name == "linkedin.md":
+            text = LIST_MARKER.sub("", ANNOTATION.sub(" ", text))
+        for claim in sorted(figures(text)):
             # Ignore years and small ordinals that are almost always prose.
             if claim in supported or len(claim) < 2 or re.match(r"^(19|20)\d\d$", claim):
                 continue
             problems.append(f"{name}: the figure {claim!r} appears nowhere in the "
-                            f"resume, the posting or the honest context")
+                            f"{missing_from}")
 
-    print(f"{app.name}")
+    print(label)
     if problems:
         for p in problems:
             print(f"  FAIL  {p}")
